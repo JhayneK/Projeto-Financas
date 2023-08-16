@@ -1,0 +1,16 @@
+.barraLateralContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  background-color: grey;
+  width: max-content;
+  height: 80vh;
+  position: absolute;
+}
+
+.posicaoIcones {
+  margin: 1rem;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 2rem;
+}
