@@ -5,21 +5,27 @@ import Config from '../pages/Config'
 import Dashboard from '../pages/Dashboard'
 import Relatorio from '../pages/Relatorio'
 import Login from '../pages/Login'
+import Header from '../components/Header'
+import Barralateral from '../components/Barralateral'
+import Footer from '../components/Footer'
 
 export default function RoutesApp() {
 
     return (
         <BrowserRouter>
+            <Header/>
+            <Barralateral/>
             <Fragment>
-                <Routes>                    
-                    <Route path="*" element={<Login />} />
+                <Routes>
+                    <Route path="*" element={<Home />} />
+                    <Route exact path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/config" element={<Config />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/relatorio" element={<Relatorio />} />
+                    <Route path="/config" element={<Config />} />
                 </Routes>
             </Fragment>
+            <Footer />
         </BrowserRouter>
     )
 }

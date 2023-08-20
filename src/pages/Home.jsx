@@ -1,5 +1,10 @@
 export default function Home() {
-    return(
-        <h1>Home</h1>
-    )
+    
+    return (
+        <div className="page-container">
+            <div className="pages-main-content">
+                <h1>Home</h1>
+            </div>
+        </div>
+    );
 }

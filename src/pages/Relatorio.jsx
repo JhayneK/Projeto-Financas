@@ -1,5 +1,9 @@
 export default function Relatorio() {
     return(
-        <h1>Relatorio</h1>
+        <div className="page-container">
+            <div className="pages-main-content">
+                <h1>Relatorio</h1>
+            </div>
+        </div>
     )
 }
