@@ -18,7 +18,7 @@ export default function RoutesApp() {
             <Fragment>
                 <Routes>
                     <Route path="*" element={<Home />} />
-                    <Route exact path="/" element={<Home />} />
+                    <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/relatorio" element={<Relatorio />} />
