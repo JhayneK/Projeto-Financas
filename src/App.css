@@ -6,7 +6,7 @@
 
 .header {
     width: 100%;
-    height: 10vh;
+    height: 7vh;
     border-bottom: 1px solid rgb(194, 194, 194);
     box-shadow: 0px 4px 5px -5px rgba(0,0,0,0.75);
     display: flex;
@@ -15,8 +15,8 @@
 }
 
 .navbar {
-    margin: 0px 5rem;
-    font-size: 25px;
+    margin: 0px 2.5vw;
+    font-size: 1.2rem;
 }
 
 .header-title {
@@ -28,23 +28,32 @@
 
 .barra-lateral-container {
     display: flex;
-    flex-direction: column;
-    align-items: start;
-    background-color: grey;
-    width: max-content;
-    height: 80vh;
     position: absolute;
+    width: 3vw;
+    height: 87vh;
+    background-color: #A6A6A6;
+    justify-content: center;
 }
 
-.barra-lateral-icon-positions {
-    cursor: pointer;
-    margin: 1.5rem;
-    width: 2rem;
+.barra-lateral-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botao-sidebar {
+    margin-top: 2rem;
+    width: 2.5vw;
+    height: 2.5vh;
+}
+
+#icon-config {
+    margin-top: 67vh;
 }
 
 .footer {
     width: 100%;
-    height: 10vh;
+    height: 6vh;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -60,11 +69,21 @@
     font-size: 10px;
 }
 
+.tabela {
+    margin: 14vh 5vw 0px;
+    /* width: 92.2vw; */
+    /* max-width: 92.2vw; */
+    min-width: 92.2vw;
+    height: 100%;
+}
+
 .page-container {
-    height: 80vh;
+    height: 87vh;
 }
 
 .pages-main-content {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    /* É AQUI QUE DEVE SER INSERIDO O CONTEÚDO DAS PAGINAS */
+    /* CUIDADO AO MEXER AQUI */
 }
