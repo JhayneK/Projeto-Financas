@@ -53,7 +53,13 @@ const rows = [
     { id: 6, Recorrente: 'Não', Banco: 'Santander', Categoria: "Comida", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
     { id: 7, Recorrente: 'Não', Banco: 'Itaú', Categoria: "Outros", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
     { id: 8, Recorrente: 'Sim', Banco: 'Santander', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 9, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"}
+    { id: 9, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
+    { id: 10, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
+    { id: 11, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
+    { id: 12, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
+    { id: 13, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
+    { id: 14, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
+    { id: 15, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
 ];
 
 export default function Tabela() {
