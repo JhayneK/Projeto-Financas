@@ -1,14 +1,12 @@
-import Header from "../Header/Header";
 import BarraLateral from "../BarraLateral/BarraLateral"
-import Footer from "../Footer";
+import HeaderLogado from "../Header/HeaderLogado";
 
 export default function LayoutComBarraLateral({ children }) {
     return (
         <div>
-            <Header />
+            <HeaderLogado />
             <BarraLateral />
             {children}
-            <Footer />
         </div>
     );
 }

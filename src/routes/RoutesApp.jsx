@@ -18,7 +18,7 @@ export default function RoutesApp() {
                         </LayoutComBarraLateral>
                     }
                 >
-                    {/* ROTAS COM A BARRA LATERAL */}
+                    {/* ROTAS PARA USUARIO LOGADO */}
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/relatorio" element={<Relatorio />} />
                     <Route path="/config" element={<Config />} />
@@ -30,7 +30,7 @@ export default function RoutesApp() {
                         </LayoutSemBarraLateral>
                     }
                 >
-                    {/* ROTAS SEM A BARRA LATERAL */}
+                    {/* ROTAS PARA USUARIO DESLOGADO */}
                     <Route path="/" element={<Home />} />
                     <Route path="/*" element={<Home />} />
                     <Route path="/home" element={<Home />} />

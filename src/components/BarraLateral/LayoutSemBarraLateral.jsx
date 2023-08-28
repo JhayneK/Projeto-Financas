@@ -1,12 +1,10 @@
-import Header from "../Header/Header";
-import Footer from "../Footer";
+import HeaderDeslogado from "../Header/HeaderDeslogado";
 
 export default function LayoutSemBarraLateral({ children }) {
     return (
         <div>
-            <Header />
+            <HeaderDeslogado />
             {children}
-            <Footer />
         </div>
     );
 }
