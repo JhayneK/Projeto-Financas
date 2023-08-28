@@ -1,14 +1,23 @@
+import { useEffect } from "react"
 import Tabela from "../components/Tabela"
+// import { AiOutlineReload } from "react-icons/ai";  // Reload icon
 
 export default function Dashboard() {
+
+    useEffect(() => {
+        document.title = "Dashboard";
+    }, []);
+    
     return(
         <div className="page-container">
-            <div className="pages-main-content">
+            <div className="pages-logado-main-content">
                 <div className="tabela">
-                    <button>Reload</button>
-                    <button>Visualizar</button>
-                    <button>Inserir</button>
-                    <button>Deletar Selec.</button>
+                    <div className="botoes-dashboard">
+                        <button id="botao-reload" className="botao-dashboard">RELOAD</button>
+                        <button id="botao-inserir" className="botao-dashboard">INSERIR</button>
+                        <button id="botao-visualizar" className="botao-dashboard">VISUALIZAR</button>
+                        <button id="botao-deletar-selec" className="botao-dashboard">DELETAR SELEC.</button>
+                    </div>
                     <Tabela />
                 </div>
             </div>
