@@ -1,11 +1,11 @@
 # Projeto-Financas
 Sistema para gerenciamento de gastos mensais.
 
-O Projeto-Finanças é um projeto fullstack que tem como objetivo desenvolver uma aplicação web para auxiliar as pessoas a registrar e gerenciar seus gastos mensais de forma eficiente. Através dessa aplicação, os usuários poderão acompanhar suas despesas de maneira prática e intuitiva, contribuindo para uma melhor organização financeira.
+O Projeto-Finanças é um projeto fullstack que tem como objetivo desenvolver uma aplicação web para auxiliar as pessoas a registrar e gerenciar seus gastos e receitas mensais de forma eficiente. Através dessa aplicação, os usuários poderão acompanhar suas despesas e receitas de maneira prática e intuitiva, contribuindo para uma melhor organização financeira.
 
-A aplicação será dividida em duas partes principais: o front-end e o back-end. O frontend será responsável por fornecer uma interface amigável e interativa, permitindo que os usuários registrem suas despesas de forma rápida e fácil. Nessa interface, eles poderão adicionar detalhes sobre os gastos como data, categoria, valor e descrição. 
+A aplicação será dividida em duas partes principais: o front-end e o back-end. O frontend será responsável por fornecer uma interface amigável e interativa, permitindo que os usuários registrem suas despesas e receitas de forma rápida e fácil. Nessa interface, eles poderão adicionar detalhes sobre os gastos e receitas, como data, categoria, valor e descrição.
 
-O sistema também contará com recursos adicionais, como a geração de gráficos e relatórios que permitirão uma visualização mais completa das despesas, possibilitando que o usuário identifique padrões e tome decisões financeiras mais informadas.
+O sistema também contará com recursos adicionais, como a geração de gráficos e relatórios que permitirão uma visualização mais completa das despesas e receitas, possibilitando que o usuário identifique padrões e tome decisões financeiras mais informadas.
 
 # Principais Funcionalidades
 <li>Cadastrar gastos;</li>
@@ -37,5 +37,7 @@ Luiz Otávio - [Perfil](https://github.com/luizotavio-vieira)
 </div>
 
 # Diagrama Físico - Banco de Dados
+![fetchdemo](https://github.com/luigimilanez/Projeto-Financas/assets/89088603/2a46592e-cd8c-4e7e-bff4-11349a5ae329)
 
-# Preview Telas
+# Preview Tela Figma
+![fetchdemo](https://github.com/luigimilanez/Projeto-Financas/assets/89088603/1fa4faf4-b5f7-4500-96b3-e33e2b3b3ded)
