@@ -1,9 +1,9 @@
-import HeaderDeslogado from "../Header/HeaderDeslogado";
+// import HeaderDeslogado from "../Header/HeaderDeslogado";
 
 export default function LayoutSemBarraLateral({ children }) {
     return (
         <div>
-            <HeaderDeslogado />
+            {/* <HeaderDeslogado /> */}
             {children}
         </div>
     );

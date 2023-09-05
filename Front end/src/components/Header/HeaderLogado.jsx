@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FiChevronDown } from "react-icons/fi";
 
 export default function HeaderLogado() {
@@ -92,7 +93,10 @@ export default function HeaderLogado() {
                             onMouseLeave={handleMouseLeave}
                         >
                             <div className="header-options">
-                                <span>Sair</span>
+                                {/* IMPLEMENTAR FUNÇÃO PARA EXCLUIR COOKIES E REDIRECIONAR USUÁRIO À RAIZ */}
+                                <Link style={{textDecoration: "none", color: "black"}} to="/">
+                                    <span>Sair</span>
+                                </Link>
                             </div>
                         </div>
                     )}

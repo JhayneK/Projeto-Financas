@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom'
-import Home from '../pages/Home'
 import Config from '../pages/Config'
 import Dashboard from '../pages/Dashboard'
 import Relatorio from '../pages/Relatorio'
@@ -31,9 +30,8 @@ export default function RoutesApp() {
                     }
                 >
                     {/* ROTAS PARA USUARIO DESLOGADO */}
-                    <Route path="/" element={<Home />} />
-                    <Route path="/*" element={<Home />} />
-                    <Route path="/home" element={<Home />} />
+                    <Route path="/" element={<Login />} />
+                    <Route path="/*" element={<Login />} />
                     <Route path="/login" element={<Login />} />
                 </Route>
             </Routes>

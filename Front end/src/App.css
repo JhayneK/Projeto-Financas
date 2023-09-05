@@ -117,6 +117,54 @@
     bottom: 5%;
 }
 
+.container-login {
+    width: 35vw;
+    height: 100vh;
+    display: inline-block;
+    background-color: rgb(218, 218, 218);
+}
+
+.inputtext-login {
+    width: 20vw;
+    height: 3.5vh;
+    margin-top: 1rem;
+    padding: 0px 5px;
+    outline: none;
+}
+
+.formulario-login {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#botao-login {
+    width: 12vw;
+    height: 4vh;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.div-login {
+    display: flex;
+    justify-content: center;
+    margin: 30vh 0px 30vh;
+    text-align: center;
+}
+
+.div-imagem {
+    width: 65vw;
+    height: 100vh;
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+}
+
+#finances-image {
+    width: 100%;
+    height: 100%;
+}
+
 .botao-dashboard {
     cursor: pointer;
     outline: none;
@@ -136,9 +184,4 @@
 
 .pages-logado-main-content {
     padding: 0px 3vw 0px;
-}
-
-.pages-deslogado-main-content {
-    display: flex;
-    justify-content: center;
 }
