@@ -1,0 +1,180 @@
+{
+    "fluxo": [
+        {
+            "ID": 4,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 8,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 12,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 14,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 15,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 16,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 17,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 18,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 19,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 20,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 21,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 22,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 23,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 24,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 25,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        },
+        {
+            "ID": 26,
+            "RECORRENTE": 0,
+            "BANCO": "NuBank",
+            "CATEGORIA": "Gasolina",
+            "METODO_PAGAMENTO": "Crédito",
+            "PARCELAMENTO": "5x",
+            "VALOR": 50.00,
+            "DATA": "2023-09-07",
+            "DESCRICAO": "Gasolina no posto"
+        }
+    ]
+}

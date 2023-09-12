@@ -17,7 +17,7 @@ export default function Despesas() {
                         <button id="botao-inserir" className="botao-dashboard">INSERIR</button>
                         <button id="botao-visualizar" className="botao-dashboard">VISUALIZAR</button>
                         <button id="botao-deletar-selec" className="botao-dashboard">DELETAR SELEC.</button>
-                        <button id="botao-filtro" className="botao-dashboard">FILTRO</button>
+                        {/* <button id="botao-filtro" className="botao-dashboard">FILTRO</button> */}
                     </div>
                     <Tabela />
                 </div>

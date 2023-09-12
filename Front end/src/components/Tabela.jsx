@@ -1,68 +1,45 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-
-const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
-    {
-        field: 'Recorrente',
-        headerName: 'Recorrente',
-        width: 150,
-        editable: false,
-    },
-    {
-        field: 'Banco',
-        headerName: 'Banco',
-        width: 150,
-        editable: false,
-    },
-    {
-        field: 'Categoria',
-        headerName: 'Categoria',
-        type: 'number',
-        width: 150,
-        editable: false,
-    },
-    {
-        field: 'MetodoPagamento',
-        headerName: 'Método de pagamento',
-        width: 200,
-    },
-    {
-        field: 'Valor',
-        headerName: 'Valor',
-        width: 160,
-    },
-    {
-        field: 'Data',
-        headerName: 'Data',
-        width: 160,
-    },
-    {
-        field: 'Observacao',
-        headerName: 'Observação',
-        width: 550,
-    },
-];
-
-const rows = [
-    { id: 1, Recorrente: 'Sim', Banco: 'Caixa', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 2, Recorrente: 'Sim', Banco: 'Sicredi', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 3, Recorrente: 'Sim', Banco: 'BB', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 4, Recorrente: 'Não', Banco: 'BB', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 5, Recorrente: 'Sim', Banco: 'BB', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 6, Recorrente: 'Não', Banco: 'Santander', Categoria: "Comida", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 7, Recorrente: 'Não', Banco: 'Itaú', Categoria: "Outros", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 8, Recorrente: 'Sim', Banco: 'Santander', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 9, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 10, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 11, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 12, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 13, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 14, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-    { id: 15, Recorrente: 'Sim', Banco: 'Bradesco', Categoria: "Gasolina", MetodoPagamento: "PIX", Valor: 1500, Data: "30/12/2023", Observacao: "TesteTesteTeste TesteTeste"},
-];
+import { Stack } from '@mui/material';
 
 export default function Tabela() {
+    const [dados, setDados] = useState([]);
+    
+    useEffect(() => {
+        axios.get("../public/dados_randomicos.json")
+            .then((response) => {
+                setDados(response.data.fluxo)
+            })
+            .catch((error) => {
+                console.error("Erro ao obter os dados do JSON");
+            });
+    }, []);
+
+    const columns = [
+        { field: 'id', headerName: 'ID', width: 90 },
+        { field: 'banco', headerName: 'BANCO', width: 150 },
+        { field: 'categoria', headerName: 'CATEGORIA', type: 'number', width: 150 },
+        { field: 'metodoPagamento', headerName: 'MÉT. PAGAMENTO', width: 200 },
+        { field: 'parcelamento', headerName: 'PARCELAMENTO', width: 200 },
+        { field: 'valor', headerName: 'VALOR', width: 160 },
+        { field: 'data', headerName: 'DATA', width: 160 },
+        { field: 'descricao', headerName: 'DESCRIÇÃO', width: 600 },
+    ];
+
+    const rows = dados.map((row) => ({
+        id: row.ID,
+        banco: row.BANCO,
+        categoria: row.CATEGORIA,
+        metodoPagamento: row.METODO_PAGAMENTO,
+        parcelamento: row.PARCELAMENTO,
+        valor: row.VALOR,
+        data: row.DATA,
+        descricao: row.DESCRICAO,
+
+    }))
+
     return (
         <Box sx={{ height: "69vh", width: '100%' }}>
             <DataGrid

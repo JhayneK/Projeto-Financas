@@ -24,6 +24,8 @@
     margin: 0px 10px;
     font-weight: bold;
     color: rgb(82, 82, 82);
+    font-weight: bold;
+    font-size: 1.1vw;
 }
 
 .header-content {
@@ -98,7 +100,7 @@
 }
 
 #gasolina-icon {
-    width: 1.2vw;
+    width: 1.15vw;
     height: 5vh; 
 }
 
@@ -177,19 +179,35 @@
 
 .botao-dashboard {
     cursor: pointer;
-    outline: none;
-    border: 1.5px solid rgb(112, 112, 112);
+    border-radius: 5px;
+    color: #163d6b;
+    /* outline: none; */
+    /* border: 1.5px solid rgb(112, 112, 112); */
+    border: none;
     background-color: rgb(211, 211, 211);
     font-weight: 800;
-    height: 2.5rem;
+    /* background-color: transparent; */
+    background-color: rgb(241, 241, 241);
+    /* height: 2.5rem; */
     font-size: 0.8rem;
     margin: 0px 10px 1vh 0px;
     padding: 5px 10px;
 }
 
+.botao-dashboard:hover {
+    /* background-color: #f1f1f1; */
+    background-color: #d1d1d1;
+}
+
 .tabela {
     margin: 15vh 3vw 0px;
-    min-width: 91vw;
+    width: 91vw;
+}
+
+.MuiDataGrid-columnHeader {
+    /* background-color: rgb(99, 99, 99); */
+    background-color: rgb(71, 70, 70);
+    color: white;
 }
 
 .pages-logado-main-content {
