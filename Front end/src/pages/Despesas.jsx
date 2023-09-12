@@ -2,10 +2,10 @@ import { useEffect } from "react"
 import Tabela from "../components/Tabela"
 // import { AiOutlineReload } from "react-icons/ai";  // Reload icon
 
-export default function Dashboard() {
+export default function Despesas() {
 
     useEffect(() => {
-        document.title = "Dashboard";
+        document.title = "Despesas";
     }, []);
     
     return(

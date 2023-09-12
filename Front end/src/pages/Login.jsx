@@ -39,7 +39,7 @@ export default function Login() {
                         </label>
 
                         {/* REDIRECIONAMENTO : APENAS PARA TESTES */}
-                        <Link style={{width: "12vw", alignSelf: "center"}} to="/dashboard">
+                        <Link style={{width: "12vw", alignSelf: "center"}} to="/relatorio">
                             <button id="botao-login">Logar</button>
                         </Link>
 
