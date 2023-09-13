@@ -54,7 +54,7 @@ GO
 CREATE TABLE [metodo]
 (
  [id_metodo]          int IDENTITY ,
- [metodo_gasto_receita] bit NOT NULL ,
+ [met_despesa_receita] bit NOT NULL ,
  [metodo]             varchar(50) NOT NULL ,
 
 
@@ -67,7 +67,7 @@ GO
 CREATE TABLE [categoria]
 (
  [id_categoria]  int IDENTITY ,
- [gasto_receita] bit NOT NULL ,
+ [cat_despesa_receita] bit NOT NULL ,
  [tp_categoria]  varchar(50) NOT NULL ,
 
 
@@ -80,7 +80,7 @@ GO
 CREATE TABLE [fluxo]
 (
  [id_fluxo]           int IDENTITY ,
- [receita_despesa]    bit NOT NULL ,
+ [flx_despesa_receita]    bit NOT NULL ,
  [id_usuario]         int NOT NULL ,
  [id_receita_usuario] int NULL ,
  [id_despesa_usuario] int NULL ,
