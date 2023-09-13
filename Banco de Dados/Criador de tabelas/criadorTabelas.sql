@@ -1,5 +1,5 @@
--- ************************************** [log_users]
-CREATE TABLE [log_users]
+-- ************************************** [log_user]
+CREATE TABLE [log_user]
 (
  [id_log]   int IDENTITY ,
  [log_data] varchar(max) NOT NULL ,
@@ -29,7 +29,6 @@ CREATE TABLE [usuario]
  [username]   varchar(64) NOT NULL ,
  [email]      varchar(64) NOT NULL ,
  [password]   varchar(64) NOT NULL ,
- [saldo]      numeric(14,2) NOT NULL ,
 
 
  CONSTRAINT [pk_usuario] PRIMARY KEY CLUSTERED ([id_usuario] ASC)
@@ -37,48 +36,42 @@ CREATE TABLE [usuario]
 GO
 
 
--- ************************************** [bancos]
-CREATE TABLE [bancos]
+-- ************************************** [banco]
+CREATE TABLE [banco]
 (
  [id_banco]   int IDENTITY ,
  [id_usuario] int NOT NULL ,
  [banco]      varchar(50) NOT NULL ,
 
 
- CONSTRAINT [pk_bancos] PRIMARY KEY CLUSTERED ([id_banco] ASC),
- CONSTRAINT [fk_usuario__bancos] FOREIGN KEY ([id_usuario])  REFERENCES [usuario]([id_usuario])
+ CONSTRAINT [pk_banco] PRIMARY KEY CLUSTERED ([id_banco] ASC),
+ CONSTRAINT [fk_usuario__banco] FOREIGN KEY ([id_usuario])  REFERENCES [usuario]([id_usuario])
 );
 GO
 
 
-CREATE NONCLUSTERED INDEX [fk_usuario__bancos] ON [bancos] 
- (
-  [id_usuario] ASC
- )
-
-GO
-
-
--- ************************************** [metodos_pagamentos]
-CREATE TABLE [metodos_pagamentos]
+-- ************************************** [metodo]
+CREATE TABLE [metodo]
 (
- [id_metodo_pagamentos] int IDENTITY ,
- [metodo]               varchar(40) NOT NULL ,
+ [id_metodo]          int IDENTITY ,
+ [metodo_gasto_receita] bit NOT NULL ,
+ [metodo]             varchar(50) NOT NULL ,
 
 
- CONSTRAINT [pk_metodos_pagamentos] PRIMARY KEY CLUSTERED ([id_metodo_pagamentos] ASC)
+ CONSTRAINT [pk_metodo] PRIMARY KEY CLUSTERED ([id_metodo] ASC)
 );
 GO
 
 
--- ************************************** [categorias]
-CREATE TABLE [categorias]
+-- ************************************** [categoria]
+CREATE TABLE [categoria]
 (
- [id_categoria] int IDENTITY ,
- [tp_categoria] varchar(50) NOT NULL ,
+ [id_categoria]  int IDENTITY ,
+ [gasto_receita] bit NOT NULL ,
+ [tp_categoria]  varchar(50) NOT NULL ,
 
 
- CONSTRAINT [pk_categorias] PRIMARY KEY CLUSTERED ([id_categoria] ASC)
+ CONSTRAINT [pk_categoria] PRIMARY KEY CLUSTERED ([id_categoria] ASC)
 );
 GO
 
@@ -86,21 +79,25 @@ GO
 -- ************************************** [fluxo]
 CREATE TABLE [fluxo]
 (
- [id_fluxo]             int IDENTITY ,
- [gasto_receita]        bit NOT NULL ,
- [recorrente]           bit NOT NULL ,
- [id_banco]             int NOT NULL ,
- [id_categoria]         int NOT NULL ,
- [id_metodo_pagamentos] int NOT NULL ,
- [parcelamento]         numeric(2,0) NULL ,
- [valor]                numeric(14,2) NOT NULL ,
- [data]                 datetime NOT NULL ,
- [observacao]           varchar(250) NOT NULL ,
+ [id_fluxo]           int IDENTITY ,
+ [receita_despesa]    bit NOT NULL ,
+ [id_usuario]         int NOT NULL ,
+ [id_receita_usuario] int NULL ,
+ [id_despesa_usuario] int NULL ,
+ [recorrente]         bit NOT NULL ,
+ [id_banco]           int NOT NULL ,
+ [id_metodo]          int NOT NULL ,
+ [id_categoria]       int NOT NULL ,
+ [parcelamento]       numeric(4,0) NULL ,
+ [valor]              numeric(14,2) NOT NULL ,
+ [data]               date NOT NULL ,
+ [descricao]          varchar(300) NOT NULL ,
 
 
  CONSTRAINT [pk_fluxo] PRIMARY KEY CLUSTERED ([id_fluxo] ASC),
- CONSTRAINT [fk_categorias__fluxo] FOREIGN KEY ([id_categoria])  REFERENCES [categorias]([id_categoria]),
- CONSTRAINT [fk_metodos_pagamentos__fluxo] FOREIGN KEY ([id_metodo_pagamentos])  REFERENCES [metodos_pagamentos]([id_metodo_pagamentos]),
- CONSTRAINT [id_bancos__fluxo] FOREIGN KEY ([id_banco])  REFERENCES [bancos]([id_banco])
+ CONSTRAINT [fk_categoria__fluxo] FOREIGN KEY ([id_categoria])  REFERENCES [categoria]([id_categoria]),
+ CONSTRAINT [fk_metodo__fluxo] FOREIGN KEY ([id_metodo])  REFERENCES [metodo]([id_metodo]),
+ CONSTRAINT [fk_usuario__fluxo] FOREIGN KEY ([id_usuario])  REFERENCES [usuario]([id_usuario]),
+ CONSTRAINT [id_banco__fluxo] FOREIGN KEY ([id_banco])  REFERENCES [banco]([id_banco])
 );
 GO
