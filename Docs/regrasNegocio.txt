@@ -1,0 +1,9 @@
+1 - Usuário não pode fazer movimentações acima de 5000 se o método de pagamento for pix
+
+2 - Usuário não pode parcelar em mais de 5 vezes um valor abaixo de 100
+
+3 - Parcelamento por boleto máximo até 10 vezes
+
+4 - Usuário só pode ter um máximo de 5 bancos vinculados
+
+5 - Usuário não pode aplicar uma movimentação na data posterior ao mês atual
