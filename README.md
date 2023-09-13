@@ -15,15 +15,16 @@ O sistema também contará com recursos adicionais, como a geração de gráfico
 <li>Visualizar relatório através de gráficos;</li>
 <li>Imprimir relatório em Excel.</li>
 
+# Documentações
+<code>[Regras de Negócio](https://github.com/luigimilanez/Projeto-Financas-Backend/blob/testes/Docs/regrasNegocio.txt)</code>
+
 # Integrantes
 Luigi Milanez - [Perfil](https://github.com/luigimilanez)<br>
-Guilherme Volpato - [Perfil](https://github.com/GuilhermeVolpato)<br>
 Miguel Cimolin - [Perfil](https://github.com/miguelcimolin)<br>
 Guilherme Dalmolin - [Perfil](https://github.com/GuiDalmolin)<br>
-Vinícius Pedroso - [Perfil](https://github.com/viniciusmilanez)<br>
-Arthur de Mello - [Perfil](https://github.com/ArthurDMello)<br>
-Guilherme Marques - [Perfil](https://github.com/GuilhermeMSilveira)<br>
-Luiz Otávio - [Perfil](https://github.com/luizotavio-vieira)
+Jhayne Henemam - [Perfil](https://github.com/JhayneK)<br>
+Gabriel Della - [Perfil](https://github.com/GabrielSouzaDG)<br>
+Adriano Savi - [Perfil](https://github.com/AdrianoReusSavi)
 
 # Tecnologias Utilizadas
 <div>
