@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-import { Stack } from '@mui/material';
+// import { Stack } from '@mui/material';
 
-export default function Tabela() {
+export default function TabelaReceita() {
     const [dados, setDados] = useState([]);
     
     useEffect(() => {
-        axios.get("../public/dados_randomicos.json")
+        axios.get("/dados_randomicos.json")
             .then((response) => {
                 setDados(response.data.fluxo)
             })
@@ -18,13 +18,13 @@ export default function Tabela() {
     }, []);
 
     const columns = [
-        { field: 'id', headerName: 'ID', width: 90 },
+        { field: 'id', headerName: 'ID', width: 150 },
         { field: 'banco', headerName: 'BANCO', width: 150 },
-        { field: 'categoria', headerName: 'CATEGORIA', type: 'number', width: 150 },
-        { field: 'metodoPagamento', headerName: 'MÉT. PAGAMENTO', width: 200 },
-        { field: 'parcelamento', headerName: 'PARCELAMENTO', width: 200 },
-        { field: 'valor', headerName: 'VALOR', width: 160 },
-        { field: 'data', headerName: 'DATA', width: 160 },
+        { field: 'categoria', headerName: 'CATEGORIA', type: 'number', width: 200 },
+        { field: 'metodoPagamento', headerName: 'MÉT. PAGAMENTO', width: 300 },
+        // { field: 'parcelamento', headerName: 'PARCELAMENTO', width: 200 },
+        { field: 'valor', headerName: 'VALOR', width: 200 },
+        { field: 'data', headerName: 'DATA', width: 200 },
         { field: 'descricao', headerName: 'DESCRIÇÃO', width: 600 },
     ];
 
@@ -33,7 +33,7 @@ export default function Tabela() {
         banco: row.BANCO,
         categoria: row.CATEGORIA,
         metodoPagamento: row.METODO_PAGAMENTO,
-        parcelamento: row.PARCELAMENTO,
+        // parcelamento: row.PARCELAMENTO,
         valor: row.VALOR,
         data: row.DATA,
         descricao: row.DESCRICAO,

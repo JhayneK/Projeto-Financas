@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import Tabela from "../components/Tabela"
+import Tabela from "../components/Tabela/TabelaDespesa"
 // import { AiOutlineReload } from "react-icons/ai";  // Reload icon
 
 export default function Despesas() {
