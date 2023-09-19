@@ -15,16 +15,15 @@ O sistema também contará com recursos adicionais, como a geração de gráfico
 <li>Visualizar relatório através de gráficos;</li>
 <li>Imprimir relatório em Excel.</li>
 
-# Documentações
-<code>[Regras de Negócio](https://github.com/luigimilanez/Projeto-Financas-Backend/blob/testes/Docs/regrasNegocio.txt)</code>
-
 # Integrantes
 Luigi Milanez - [Perfil](https://github.com/luigimilanez)<br>
+Guilherme Volpato - [Perfil](https://github.com/GuilhermeVolpato)<br>
 Miguel Cimolin - [Perfil](https://github.com/miguelcimolin)<br>
 Guilherme Dalmolin - [Perfil](https://github.com/GuiDalmolin)<br>
-Jhayne Henemam - [Perfil](https://github.com/JhayneK)<br>
-Gabriel Della - [Perfil](https://github.com/GabrielSouzaDG)<br>
-Adriano Savi - [Perfil](https://github.com/AdrianoReusSavi)
+Vinícius Pedroso - [Perfil](https://github.com/viniciusmilanez)<br>
+Arthur de Mello - [Perfil](https://github.com/ArthurDMello)<br>
+Guilherme Marques - [Perfil](https://github.com/GuilhermeMSilveira)<br>
+Luiz Otávio - [Perfil](https://github.com/luizotavio-vieira)
 
 # Tecnologias Utilizadas
 <div>
@@ -38,7 +37,7 @@ Adriano Savi - [Perfil](https://github.com/AdrianoReusSavi)
 </div>
 
 # Diagrama Físico - Banco de Dados
-![fetchdemo](https://github.com/luigimilanez/Projeto-Financas/assets/89088603/37cd95b7-f0fa-48ed-8730-6d9994a10675)
+![fetchdemo](https://github.com/luigimilanez/Projeto-Financas/assets/89088603/2a46592e-cd8c-4e7e-bff4-11349a5ae329)
 
 # Preview Tela Figma
 ![fetchdemo](https://github.com/luigimilanez/Projeto-Financas/assets/89088603/1fa4faf4-b5f7-4500-96b3-e33e2b3b3ded)
