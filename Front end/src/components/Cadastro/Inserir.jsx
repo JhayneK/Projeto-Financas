@@ -218,7 +218,7 @@ export default function Inserir({ onClose }) {
                 </div>
                 <div className="botoes-cadastro">
                     <button onClick={inserir}>Inserir</button>
-                    <button onClick={close}>Cancelar</button>
+                    <button onClick={onClose}>Cancelar</button>
                     <button onClick={limparCampos} style={{marginLeft: "0.5vw"}}>Limpar</button>
                 </div>
             </div>
