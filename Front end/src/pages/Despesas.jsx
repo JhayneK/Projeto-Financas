@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Tabela from "../components/Tabela/TabelaDespesa"
-import Inserir from "../components/InserirDespesa";
+import InserirDespesa from "../components/InserirDespesa";
 // import { AiOutlineReload } from "react-icons/ai";  // Reload icon
 
 export default function Despesas() {
@@ -34,7 +34,7 @@ export default function Despesas() {
                 </div>
             </div>
             {exibirCadastro && (
-                <Inserir onClose={handleFecharCadastro} />
+                <InserirDespesa onClose={handleFecharCadastro} />
             )}
         </div>
     )
