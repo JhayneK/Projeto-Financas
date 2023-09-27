@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import finances from "../assets/img/finances.jpg"
+import shieldlogin from "../assets/img/shieldlogin.png"
 
 export default function Login() {    
     
@@ -14,40 +15,39 @@ export default function Login() {
     return(
         <div className="page-container">
             <div className="container-login">
-                <div className="div-login">
-                    <form className="formulario-login" action="" method="post">
-                        <h1 style={{fontSize: "3rem", marginBottom: "3rem"}} className="login-labels">Login</h1>
-                        
-                        <label>
-                            <input className="inputtext-login" 
-                            type="text" 
-                            value={username} 
-                            onChange={(event) => setUsername(event.target.value)} 
-                            maxLength="64"
-                            placeholder="Usuário" 
-                            required />
-                        </label>
-
-                        <label>
-                            <input style={{marginBottom: "1.5rem"}} className="inputtext-login"
-                            type="password" 
-                            value={password} 
-                            onChange={(event) => setPassword(event.target.value)}
-                            maxLength="64"
-                            placeholder="Senha"
-                            required />
-                        </label>
-
-                        {/* REDIRECIONAMENTO : APENAS PARA TESTES */}
-                        <Link style={{width: "12vw", alignSelf: "center"}} to="/relatorio">
-                            <button id="botao-login">Logar</button>
-                        </Link>
-
-                    </form>
+                <img style={{width: "100%", height: "100%"}} id="finances-image" src={finances} alt="finanças" />
+                <div className="bloco-login">
+                    <div className="conteudo-login">
+                        <img style={{width:  "40%", height: "80%"}} src={shieldlogin} alt="shield" />
+                        <form action="">
+                            <div>
+                                <input style={{marginTop: "4rem"}}
+                                type="text" 
+                                value={username} 
+                                onChange={(event) => setUsername(event.target.value)} 
+                                maxLength="64"
+                                placeholder="Usuário" 
+                                autoComplete="username"
+                                required />
+                            </div>
+                            <div>
+                                <input type="password" 
+                                value={password} 
+                                onChange={(event) => setPassword(event.target.value)}
+                                maxLength="64"
+                                placeholder="Senha"
+                                autoComplete="current-password"
+                                required />
+                            </div>
+                            <div style={{display: "flex", justifyContent: "center", marginTop: "2rem"}}>
+                                <Link to="/relatorio">
+                                    <button>Entrar</button>
+                                </Link>
+                            </div>
+                                <span style={{display: "flex", justifyContent: "center", fontSize: "12px", marginTop: "5px"}}>Não possui uma conta?&nbsp;<span style={{textDecoration: "none", color: "blue", fontWeight: "bold", cursor: "pointer"}}>Cadastre-se</span></span>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div className="div-imagem">
-                <img id="finances-image" src={finances} alt="finanças" />
             </div>
         </div>      
     )

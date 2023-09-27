@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function Inserir({ onClose }) {
+export default function InserirDespesa({ onClose }) {
     const [banco, setBanco] = useState("");
     const [categoria, setCategoria] = useState("");
     const [metodoPagamento, setMetodoPagamento] = useState("");
