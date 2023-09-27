@@ -1,6 +1,11 @@
 package com.financas.model;
+import javax.persistence.*;
 
+@MappedSuperclass
 public class EntityId {
+    @id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     public Long getId() {
