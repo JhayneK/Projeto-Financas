@@ -9,7 +9,7 @@ export default function Barralateral() {
 
     return (
         <div className="barra-lateral-container">
-            <div className="barra-lateral-content">              
+            <div className="barra-lateral-content">
                 <Link to="/relatorio">
                     <div className={`botoes-sidebar ${location.pathname === '/relatorio' ? 'active' : ''}`}>
                         <FaChartBar id="relatory-icon" className="botao-sidebar" color="black" />
