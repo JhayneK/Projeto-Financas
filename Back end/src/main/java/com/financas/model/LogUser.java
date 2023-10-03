@@ -1,6 +1,9 @@
 package com.financas.model;
+import javax.persistense.*;
 
+@Entity
 public class LogUser extends EntityId {
+    @Column(name = "logData", nullable= false)
     private String logData;
 
     public LogUser(String logData) {
