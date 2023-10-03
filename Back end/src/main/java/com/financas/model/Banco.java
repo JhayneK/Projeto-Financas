@@ -1,5 +1,5 @@
 package com.financas.model;
-import javax.persistense.*
+import javax.persistense.*;
 
 @Entity
 public class Banco extends EntityId {
