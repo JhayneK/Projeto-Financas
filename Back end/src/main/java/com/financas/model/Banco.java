@@ -1,6 +1,9 @@
 package com.financas.model;
+import javax.persistense.*
 
+@Entity
 public class Banco extends EntityId {
+    @Column(name = "banco", nullable= false)
     private String banco;
 
     public Banco(String banco) {
