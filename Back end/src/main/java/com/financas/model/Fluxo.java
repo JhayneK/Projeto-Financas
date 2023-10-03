@@ -1,19 +1,32 @@
 package com.financas.model;
-
 import java.util.Date;
+import javax.persistense.*;
 
+@Entity
 public class Fluxo extends EntityId {
+    @Column(name = "flxDespesaReceita", nullable= false)
     private Byte flxDespesaReceita;
+    @Column(name = "usuario", nullable= false)
     private Usuario usuario;
+    @Column(name = "idReceitaUsuario", nullable= false)
     private Integer idReceitaUsuario;
+    @Column(name = "idDespesaUsuario", nullable= false)
     private Integer idDespesaUsuario;
+    @Column(name = "recorrente", nullable= false)
     private Byte recorrente;
+    @Column(name = "banco", nullable= false)
     private Banco banco;
+    @Column(name = "metodo", nullable= false)
     private Metodo metodo;
+    @Column(name = "categoria", nullable= false)
     private Categoria categoria;
+    @Column(name = "parcelamento", nullable= false)
     private Integer parcelamento;
+    @Column(name = "valor", nullable= false)
     private Integer valor;
+    @Column(name = "data", nullable= false)
     private Date data;
+    @Column(name = "descricao", nullable= false)
     private String descricao;
 
     public Fluxo(Byte flxDespesaReceita, Usuario usuario, Integer idReceitaUsuario, Integer idDespesaUsuario, Byte recorrente, Banco banco, Metodo metodo, Categoria categoria, Integer parcelamento, Integer valor, Date data, String descricao) {
