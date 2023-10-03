@@ -1,8 +1,13 @@
 package com.financas.model;
+import javax.persistense.*;
 
+@Entity
 public class Usuario extends EntityId {
+    @Column(name = "username", nullable= false)
     private String username;
+    @Column(name = "email", nullable= false)
     private String email;
+    @Column(name = "password", nullable= false)
     private String password;
 
     public Usuario(String username, String email, String password) {
