@@ -1,6 +1,10 @@
 package com.financas.model;
 
+import javax.persistense.*;
+
+@Entity
 public class LogEdit {
+    @Column(name = "logEditData", nullable= false)
     private String logEditData;
 
     public LogEdit(String logEditData) {
