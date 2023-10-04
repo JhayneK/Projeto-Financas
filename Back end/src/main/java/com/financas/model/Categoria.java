@@ -1,7 +1,11 @@
 package com.financas.model;
+import javax.persistense.*;
 
+@Entity
 public class Categoria extends EntityId {
+    @Column(name = "catDespesaReceita", nullable= false)
     private Byte catDespesaReceita;
+    @Column(name = "tpCategoria", nullable= false)
     private String tpCategoria;
 
     public Categoria(Byte catDespesaReceita, String tpCategoria) {
