@@ -15,6 +15,9 @@ O sistema também contará com recursos adicionais, como a geração de gráfico
 <li>Visualizar relatório através de gráficos;</li>
 <li>Imprimir relatório em Excel.</li>
 
+# Documentações
+<code>[Regras de Negócio](https://github.com/luigimilanez/Projeto-Financas/blob/testes/Docs/regrasNegocio.txt)</code>
+
 # Integrantes
 Luigi Milanez - [Perfil](https://github.com/luigimilanez)<br>
 Guilherme Volpato - [Perfil](https://github.com/GuilhermeVolpato)<br>
@@ -40,7 +43,7 @@ Luiz Otávio - [Perfil](https://github.com/luizotavio-vieira)
 ![fetchdemo](https://github.com/luigimilanez/Projeto-Financas/assets/89088603/4171b05d-7a3b-4a30-8560-097c302b8952)
 
 # Link dos Protótipos
-[Link dos Protótipos](https://www.figma.com/file/MVENHPKiW3hbVP2YcrOlwu/Projeto-BackEnd---Finan%C3%A7as?type=design&node-id=0-1&mode=design&t=w0YHmROMTSNQO5Uf-0)
+<code>[Link dos Protótipos](https://www.figma.com/file/MVENHPKiW3hbVP2YcrOlwu/Projeto-BackEnd---Finan%C3%A7as?type=design&node-id=0-1&mode=design&t=w0YHmROMTSNQO5Uf-0)</code>
 
 # Preview Tela Figma
 ![fetchdemo](https://github.com/luigimilanez/Projeto-Financas/assets/89088603/1fa4faf4-b5f7-4500-96b3-e33e2b3b3ded)
