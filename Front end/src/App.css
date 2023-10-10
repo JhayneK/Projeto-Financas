@@ -372,6 +372,60 @@ input:disabled {
     color: #163d6b;
 }
 
+/*Grafs*/
+
+.graf-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vh;
+    height: 100vh;
+}
+
+.charts-container {
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.fluxo-box {
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    height: 250px;
+    background-color: white;
+    box-shadow: 0px 1px 22px -12px #607D8B;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    margin-right: 5vh;
+    margin-left: 5vh;
+}
+
+.line-box {
+    background-color: white;
+    border-radius: 4px;
+    margin-right: 6vh;
+}
+
+.donut-box {
+    background-color: white;
+    border-radius: 4px;
+    margin-left: 6vh;
+}
+
+.top-charts {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: space-between;
+    margin-bottom: 1vh;
+}
+
+.bottom-charts {
+    display: flex;
+    justify-content: center;
+}
+
 .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
@@ -407,4 +461,8 @@ input:disabled {
 
 .pages-logado-main-content {
     padding: 6vh 3vw 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E6E6E6;
 }
