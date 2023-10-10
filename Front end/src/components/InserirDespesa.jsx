@@ -168,7 +168,7 @@ export default function InserirDespesa({ onClose }) {
                                 <div className="caixa-cadastro-espacamento">
                                     <label>Categoria</label>
                                     <select className={`${camposVazios.categoria ? 'campo-vazio' : ''}`} 
-                                    name="categora" 
+                                    name="categoria" 
                                     id="" 
                                     value={categoria} 
                                     onChange={handleCategoriaChange}>

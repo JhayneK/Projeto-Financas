@@ -186,7 +186,6 @@
     border-radius: 5px;
     color: #163d6b;
     border: none;
-    background-color: rgb(211, 211, 211);
     font-weight: 800;
     background-color: rgb(241, 241, 241);
     font-size: 0.8rem;
@@ -195,6 +194,78 @@
 }
 
 .botao-dashboard:hover {
+    background-color: #d1d1d1;
+}
+
+.comb-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55vh;
+}
+
+.caixa-gasolina {
+    margin-top: 25vh;
+    padding: 15px;
+    width: 50vw;
+    height: 56vh;
+    background-color: rgb(233, 233, 233);
+    border: 0.5px solid black;
+}
+
+.form-comb-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.form-comb {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-comb label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.form-comb input {
+    padding: 0px 5px;
+    height: 2.5vh;
+}
+
+.form-comb select {
+    padding: 0px 5px;
+    height: 2.9vh;
+}
+
+.form-comb textarea {
+    padding: 5px 5px;
+    height: 8.5vh;
+    resize: none;
+}
+
+.form-comb-buttons {
+    margin-top: 3%;
+    position: absolute;
+}
+
+.form-comb-buttons button {
+    cursor: pointer;
+    border-radius: 5px;
+    color: #163d6b;
+    border: none;
+    font-weight: 800;
+    background-color: rgb(226, 226, 226);
+    font-size: 0.8rem;
+    margin: 0px 10px 1vh 0px;
+    padding: 5px 10px;
+}
+
+.form-comb-buttons button:hover {
     background-color: #d1d1d1;
 }
 
@@ -251,7 +322,7 @@
     border: none;
 }
 
-.caixa-cadastro-espacamento input:disabled {
+input:disabled {
     cursor: not-allowed;
 }
 
