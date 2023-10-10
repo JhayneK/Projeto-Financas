@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-
+import Graf from "../components/Graficos/Graf";
 
 export default function Relatorio() {
 
@@ -10,7 +10,7 @@ export default function Relatorio() {
     return(
         <div className="page-container">
             <div className="pages-logado-main-content">
-                <h1>Relatorio</h1>
+                <Graf />
             </div>
         </div>
     )
