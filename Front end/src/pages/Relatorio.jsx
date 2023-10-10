@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
 import Graf from "../components/Graficos/Graf";
 
 export default function Relatorio() {

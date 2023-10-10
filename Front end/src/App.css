@@ -466,3 +466,15 @@ input:disabled {
     align-items: center;
     background-color: #E6E6E6;
 }
+/* styles.css */
+
+      
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .em-segundo-plano {
+        z-index: 1;
+    }

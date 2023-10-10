@@ -17,6 +17,7 @@
     "@mui/x-data-grid": "^6.11.2",
     "axios": "^1.5.0",
     "react": "^18.2.0",
+    "react-apexcharts": "^1.4.1",
     "react-credit-card": "^0.20.0",
     "react-credit-cards-2": "^1.0.1",
     "react-dom": "^18.2.0",
