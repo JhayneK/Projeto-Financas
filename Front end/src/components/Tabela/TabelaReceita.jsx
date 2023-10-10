@@ -3,6 +3,8 @@ import axios from 'axios';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 // import { Stack } from '@mui/material';
+import TelaCarregamento from "../../components/TelaCarregamento/TelaCarregamento";
+
 
 export default function TabelaReceita() {
     const [dados, setDados] = useState([]);

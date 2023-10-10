@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
+
 
 export default function Gasolina() {
     useEffect(() => {

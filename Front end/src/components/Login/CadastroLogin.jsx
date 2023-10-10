@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import TelaLogin from "./TelaLogin";
+import TelaCarregamento from "../TelaCarregamento/TelaCarregamento";
+
+
 
 export default function CadastroLogin() {
     const [username, setUsername] = useState('');
@@ -9,12 +12,21 @@ export default function CadastroLogin() {
 
     // Adicione uma variável de estado para controlar a validade da senha de confirmação
     const [senhaConfirmacaoValida, setSenhaConfirmacaoValida] = useState(true);
+    const [exibirCarregamento, setExibirCarregamento] = useState(true);
 
     const [mostrarOutroComponente, setMostrarOutroComponente] = useState(false);
     
     const handleEntrarClick = () => {
         setMostrarOutroComponente(true);
     };
+
+    useEffect(() => {
+        setTimeout(() => {
+          // Após o carregamento (simulação), você pode redirecionar o usuário ou executar outras ações necessárias
+          setExibirCarregamento(false); // Desativa a tela de carregamento
+        }, 2000); // Simula o carregamento por 2 segundos (ajuste conforme necessário)
+      }, []);
+    
 
     // Adicione uma função para validar a senha de confirmação
     const validarSenhaConfirmacao = () => {
@@ -25,7 +37,7 @@ export default function CadastroLogin() {
         }
     };
 
-    return (
+    return !exibirCarregamento?( 
         <div>
             {mostrarOutroComponente ? (
                 <TelaLogin />
@@ -91,5 +103,8 @@ export default function CadastroLogin() {
                 </form>
             )}
         </div>
+              ):(
+                
+                <TelaCarregamento />
     );
 }

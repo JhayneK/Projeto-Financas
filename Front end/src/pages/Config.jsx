@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
+import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
+
 
 const Config = () => {
   const [personalInfoOpen, setPersonalInfoOpen] = useState(false);
