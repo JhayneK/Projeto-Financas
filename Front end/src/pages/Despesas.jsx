@@ -21,7 +21,7 @@ export default function Despesas() {
 
     return(
         <div className="page-container">
-            <div className="pages-logado-main-content">
+            <div className="pages-logado-main-content" style={{paddingLeft: "3vw"}}>
                 <div className="tabela">
                     <div className="botoes-dashboard">
                         <button className="botao-dashboard">RELOAD</button>

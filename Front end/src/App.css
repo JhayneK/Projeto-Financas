@@ -199,13 +199,13 @@
 
 .comb-container {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-    height: 55vh;
+    /* height: 55vh; */
 }
 
 .caixa-gasolina {
-    margin-top: 25vh;
+    /* margin-top: 25vh; */
     padding: 15px;
     width: 50vw;
     height: 56vh;
@@ -249,7 +249,7 @@
 }
 
 .form-comb-buttons {
-    margin-top: 3%;
+    margin-top: 6%;
     position: absolute;
 }
 
@@ -376,16 +376,16 @@ input:disabled {
 
 .graf-container {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
-    width: 100vh;
-    height: 100vh;
+    /* width: 100vh; */
+    /* height: 100vh; */
 }
 
 .charts-container {
     align-items: center;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     margin-bottom: 10px;
 }
 
@@ -406,18 +406,23 @@ input:disabled {
     background-color: white;
     border-radius: 4px;
     margin-right: 6vh;
+    width: 600px;
+    height: 550px;
 }
 
 .donut-box {
     background-color: white;
     border-radius: 4px;
     margin-left: 6vh;
+    width: 550px;
+    height: 400px;
 }
 
 .top-charts {
     display: flex;
     justify-content: space-between;
     flex-direction: space-between;
+    /* margin-top: -15vh; */
     margin-bottom: 1vh;
 }
 
@@ -453,18 +458,28 @@ input:disabled {
     width: 91vw;
 }
 
+/* Colunas da tabela */
 .MuiDataGrid-columnHeader {
     /* background-color: rgb(99, 99, 99); */
     background-color: rgb(71, 70, 70);
     color: white;
 }
 
+.MuiDataGrid-row {
+    background-color: white;
+}
+
 .pages-logado-main-content {
-    padding: 6vh 3vw 0px;
+    /* height: 100vh; */
+    /* padding: 6vh 3vw 0px; */
+    padding: 6vh 0px 0px 0px;
+    /* margin: 6vh 0px 0px 3vw; */
     display: flex;
+    height: 94vh;
     justify-content: center;
-    align-items: center;
-    background-color: #E6E6E6;
+    /* align-items: center; */
+    /* background-color: #ececec; */
+    background-color: whitesmoke;
 }
 /* styles.css */
 

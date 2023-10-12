@@ -57,6 +57,7 @@ export default function TabelaReceita() {
                 pageSizeOptions={[25]}
                 checkboxSelection
                 disableRowSelectionOnClick
+                
             />
         </Box>
     );

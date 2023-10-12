@@ -264,7 +264,7 @@ export default function Gasolina() {
                                 />
                             </div>
                             <div
-                                style={{ marginTop: "12.5%" }}
+                                style={{ marginTop: "24%" }}
                                 className="form-comb-buttons"
                             >
                                 <button onClick={adicionarDespesa}>
