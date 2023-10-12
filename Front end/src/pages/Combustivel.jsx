@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
 
 
-export default function Gasolina() {
+export default function Combustivel() {
     useEffect(() => {
-        document.title = "Gasolina";
+        document.title = "Combustível";
     }, []);
 
     const [exibirCarregamento, setExibirCarregamento] = useState(true);
