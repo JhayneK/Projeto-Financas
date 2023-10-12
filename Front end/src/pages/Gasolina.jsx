@@ -7,6 +7,15 @@ export default function Gasolina() {
         document.title = "Gasolina";
     }, []);
 
+    const [exibirCarregamento, setExibirCarregamento] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+          // Após o carregamento (simulação), você pode redirecionar o usuário ou executar outras ações necessárias
+          setExibirCarregamento(false); // Desativa a tela de carregamento
+        }, 350); // Simula o carregamento por 2 segundos (ajuste conforme necessário)
+      }, []);
+
     const [distPercorrida, setDistPercorrida] = useState("");
     const [consumoMedio, setConsumoMedio] = useState("");
     const [precoGasolina, setPrecoGasolina] = useState("");
@@ -110,7 +119,7 @@ export default function Gasolina() {
     //     });
     // };
 
-    return (
+    return !exibirCarregamento?(
         <div className="page-container">
             <div className="pages-logado-main-content">
                 <div className="comb-container fadeInDown">
@@ -276,5 +285,7 @@ export default function Gasolina() {
                 </div>
             </div>
         </div>
+    ) : (
+        <TelaCarregamento />
     );
 }

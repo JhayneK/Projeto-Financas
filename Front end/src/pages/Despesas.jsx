@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Tabela from "../components/Tabela/TabelaDespesa"
 import InserirDespesa from "../components/InserirDespesa";
 // import { AiOutlineReload } from "react-icons/ai";  // Reload icon
+import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
 
 export default function Despesas() {
 
@@ -9,6 +10,15 @@ export default function Despesas() {
         document.title = "Despesas";
     }, []);
     
+    const [exibirCarregamento, setExibirCarregamento] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+          // Após o carregamento (simulação), você pode redirecionar o usuário ou executar outras ações necessárias
+          setExibirCarregamento(false); // Desativa a tela de carregamento
+        }, 350); // Simula o carregamento por 2 segundos (ajuste conforme necessário)
+      }, []);
+
     const [exibirCadastro, setExibirCadastro] = useState(false);
 
     const handleAbrirCadastro = () => {
@@ -19,7 +29,7 @@ export default function Despesas() {
         setExibirCadastro(false);
     };
 
-    return(
+    return !exibirCarregamento?(
         <div className="page-container">
             <div className="pages-logado-main-content" style={{paddingLeft: "3vw"}}>
                 <div className="tabela">
@@ -37,5 +47,7 @@ export default function Despesas() {
                 <InserirDespesa onClose={handleFecharCadastro} />
             )}
         </div>
+    ) : (
+        <TelaCarregamento />
     )
 }
