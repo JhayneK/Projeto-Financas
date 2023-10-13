@@ -1,244 +1,265 @@
 import React, { useEffect, useState } from "react";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import Cards from "react-credit-cards-2";
+import Box from "@mui/material/Box";
+import { DataGrid } from "@mui/x-data-grid";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
+import { red } from "@mui/material/colors";
+
+const headerStyle = {
+  position: "absolute",
+  width: "90%",
+  height: "26px",
+  right: "0",
+  boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)",
+  borderRadius: "2px",
+  marginTop: "1px",
+};
+
+const rectangleStyle = {
+  position: "absolute",
+  width: "90%",
+  height: "26px",
+  right: "0",
+  background: "#FFFFFF",
+  boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)",
+  borderRadius: "2px",
+  marginTop: "1px",
+};
+
+const textHeaderStyle = {
+  borderRadius: "2px",
+  position: "absolute",
+  width: "90%",
+  height: "24px",
+  right: "0",
+  fontFamily: "Inter",
+  fontStyle: "normal",
+  fontWeight: 700,
+  fontSize: "15px",
+  lineHeight: "18px",
+  display: "flex",
+  alignItems: "center",
+  color: "#000000",
+  marginLeft: "20px",
+  marginTop: "1px",
+};
 
 const Config = () => {
-  
-    useEffect(() => {
-        document.title = "Configurações";
-    }, []);
+  useEffect(() => {
+    document.title = "Configurações";
+  }, []);
 
-    const [exibirCarregamento, setExibirCarregamento] = useState(true);
+  const [exibirCarregamento, setExibirCarregamento] = useState(true);
 
-    useEffect(() => {
-        setTimeout(() => {
-          // Após o carregamento (simulação), você pode redirecionar o usuário ou executar outras ações necessárias
-          setExibirCarregamento(false); // Desativa a tela de carregamento
-        }, 350); // Simula o carregamento por 2 segundos (ajuste conforme necessário)
-      }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setExibirCarregamento(false);
+    }, 350);
+  }, []);
 
-    const [personalInfoOpen, setPersonalInfoOpen] = useState(false);
-    const [privacyOpen, setPrivacyOpen] = useState(false);
-    const [creditCardOpen, setCreditCardOpen] = useState(false);
-    const [loginAndPasswordOpen, setLoginAndPasswordOpen] = useState(false);
+  const [redefinirSenha, setRedefinirSenha] = useState(true);
 
-    const togglePersonalInfo = () => setPersonalInfoOpen(!personalInfoOpen);
-    const togglePrivacy = () => setPrivacyOpen(!privacyOpen);
-    const toggleCreditCard = () => setCreditCardOpen(!creditCardOpen);
-    const toggleLoginAndPassword = () =>
-        setLoginAndPasswordOpen(!loginAndPasswordOpen);
+  const toggleRedefinirSenha = () => {
+    setRedefinirSenha(true);
+  };
 
-    const cardStyle = {
-        backgroundColor: "#fff",
-        boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
-        borderRadius: "8px",
-        marginBottom: "20px",
-        width: "500px",
-        padding: "16px",
-        cursor: "pointer",
-    };
+  const toggleCadastrarBanco = () => {
+    setRedefinirSenha(false);
+  };
 
-    const titleStyle = {
-        fontSize: "20px",
-        fontWeight: "bold",
-        marginBottom: "8px",
-        display: "flex",
-        alignItems: "center",
-    };
+  const cardStyle = {
+    backgroundColor: "#F7F7F7",
+    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
+    borderRadius: "8px",
+    marginBottom: "20px",
+    width: "100%",
+    padding: "16px",
+    borderWidth: "3px",
+    borderColor: "#000000",
+  };
 
-    const inputStyle = {
-        height: "24px",
-        width: "95%",
-        borderRadius: "4px",
-        marginBottom: "12px",
-        border: "1px solid #ccc",
-        padding: "8px",
-    };
+  const cardContainerStyle = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: "20px",
+  };
 
-    const [state, setState] = useState({
-        number: "",
-        expiry: "",
-        cvc: "",
-        name: "",
-        focus: "",
-    });
+  const cardWidth = {
+    width: "300px",
+    height: "300px",
+    paddingRight: "100px",
+    alignSelf: "center",
+  };
 
-    const handleInputChange = (evt) => {
-        const { name, value } = evt.target;
+  const titleStyle = {
+    fontSize: "20px",
+    fontWeight: "bold",
+    marginBottom: "8px",
+    display: "flex",
+    alignItems: "center",
+  };
 
-        setState((prev) => ({ ...prev, [name]: value }));
-    };
+  const inputStyle = {
+    height: "36px",
+    width: "100%",
+    borderRadius: "4px",
+    marginBottom: "12px",
+    border: "1px solid #ccc",
+    padding: "8px",
+  };
 
-    const handleInputFocus = (evt) => {
-        setState((prev) => ({ ...prev, focus: evt.target.name }));
-    };
+  const buttonStyle = {
+    border: "none",
+    borderRadius: "11px",
+    height: "40px",
+    width: "100%",
+  };
 
-    return !exibirCarregamento?(
-        <div className="pages-logado-main-content">
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    paddingTop: "20px",
-                }}
-            >
-                <div style={cardStyle}>
-                    <div onClick={togglePersonalInfo} style={titleStyle}>
-                        Informações Pessoais
-                        <KeyboardArrowDownIcon
-                            style={{ fontSize: "24px", marginLeft: "auto" }}
-                        />
-                    </div>
-                    {personalInfoOpen ? (
-                        <div>
-                            <div style={{ marginBottom: "12px" }}>
-                                <input
-                                    type="text"
-                                    placeholder="Nome"
-                                    style={inputStyle}
-                                />
-                            </div>
-                            <div style={{ marginBottom: "12px" }}>
-                                <input
-                                    type="text"
-                                    placeholder="Sobrenome"
-                                    style={inputStyle}
-                                />
-                            </div>
-                            <div style={{ marginBottom: "12px" }}>
-                                <input
-                                    type="text"
-                                    placeholder="Email"
-                                    style={inputStyle}
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    type="text"
-                                    placeholder="Telefone"
-                                    style={inputStyle}
-                                />
-                            </div>
-                        </div>
-                    ) : null}
-                </div>
-
-                <div style={cardStyle}>
-                    <div onClick={togglePrivacy} style={titleStyle}>
-                        Privacidade
-                        <KeyboardArrowDownIcon
-                            style={{ fontSize: "24px", marginLeft: "auto" }}
-                        />
-                    </div>
-                    {privacyOpen ? (
-                        <div>
-                            <div style={{ marginBottom: "12px" }}>
-                                <input
-                                    type="password"
-                                    placeholder="Senha Atual"
-                                    style={inputStyle}
-                                />
-                            </div>
-                            <div style={{ marginBottom: "12px" }}>
-                                <input
-                                    type="password"
-                                    placeholder="Nova Senha"
-                                    style={inputStyle}
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    type="password"
-                                    placeholder="Confirmar Nova Senha"
-                                    style={inputStyle}
-                                />
-                            </div>
-                        </div>
-                    ) : null}
-                </div>
-
-                <div style={cardStyle}>
-                    <div onClick={toggleCreditCard} style={titleStyle}>
-                        Cartão de Crédito
-                        <KeyboardArrowDownIcon
-                            style={{ fontSize: "24px", marginLeft: "auto" }}
-                        />
-                    </div>
-                    {creditCardOpen ? (
-                        <div>
-                            <div style={{ marginBottom: "12px" }}>
-                                <Cards
-                                    number={state.number}
-                                    expiry={state.expiry}
-                                    cvc={state.cvc}
-                                    name={state.name}
-                                    focused={state.focus}
-                                />
-                                <form style={{ marginTop: 10 }}>
-                                    <input
-                                        type="number"
-                                        name="number"
-                                        placeholder="Card Number"
-                                        value={state.number}
-                                        onChange={handleInputChange}
-                                        onFocus={handleInputFocus}
-                                        style={inputStyle}
-                                    />
-                                    <div style={{ marginBottom: "12px" }}>
-                                        <input
-                                            type="text"
-                                            placeholder="Data de Validade"
-                                            style={inputStyle}
-                                        />
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div>
-                                <input
-                                    type="text"
-                                    placeholder="Código de Segurança"
-                                    style={inputStyle}
-                                />
-                            </div>
-                        </div>
-                    ) : null}
-                </div>
-
-                <div style={cardStyle}>
-                    <div onClick={toggleLoginAndPassword} style={titleStyle}>
-                        Login e Senha
-                        <KeyboardArrowDownIcon
-                            style={{ fontSize: "24px", marginLeft: "auto" }}
-                        />
-                    </div>
-                    {loginAndPasswordOpen ? (
-                        <div>
-                            <div style={{ marginBottom: "12px" }}>
-                                <input
-                                    type="text"
-                                    placeholder="Nome de Usuário"
-                                    style={inputStyle}
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    type="password"
-                                    placeholder="Senha"
-                                    style={inputStyle}
-                                />
-                            </div>
-                        </div>
-                    ) : null}
-                </div>
-            </div>
+  return !exibirCarregamento ? (
+    <div className="pages-logado-main-content">
+      <div style={headerStyle}></div>
+      <div style={rectangleStyle}></div>
+      <div style={textHeaderStyle}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <button
+            onClick={toggleRedefinirSenha}
+            style={{
+              border: "none",
+              background: "transparent",
+              marginRight: "20px",
+              color: redefinirSenha ? "#000000" : "#BDBDBD",
+            }}
+          >
+            Redefinir Senha
+          </button>
+          <button
+            onClick={toggleCadastrarBanco}
+            style={{
+              border: "none",
+              background: "transparent",
+              color: redefinirSenha ? "#BDBDBD" : "#000000",
+            }}
+          >
+            Cadastrar Banco
+          </button>
         </div>
-    ) : (
-        <TelaCarregamento />
-    );
+      </div>
+      {redefinirSenha && (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "center",
+            alignItems: "center",
+            height: "300px",
+            width: "300px",
+            background: "#F7F7F7",
+            alignSelf: `center`,
+            borderWidth: "1px",
+            borderColor: "#000000",
+          }}
+        >
+          <div style={cardStyle}>
+            <div onClick={toggleRedefinirSenha} style={titleStyle}>
+              Redefinição de Senha
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                background: "#F7F7F7",
+              }}
+            >
+              <input
+                type="password"
+                placeholder="Senha atual"
+                style={{ ...inputStyle, width: "100%" }}
+              />
+              <input
+                type="password"
+                placeholder="Senha nova"
+                style={{ ...inputStyle, width: "100%" }}
+              />
+              <input
+                type="password"
+                placeholder="Confirmar senha nova"
+                style={{ ...inputStyle, width: "100%" }}
+              />
+              <button style={buttonStyle}>Redefinir</button>
+            </div>
+          </div>
+        </div>
+      )}
+      {!redefinirSenha && (
+        <div style={cardContainerStyle}>
+          <div style={{ ...cardWidth }}>
+            <div style={cardStyle}>
+              <div onClick={toggleCadastrarBanco} style={titleStyle}>
+                Cadastro de bancos
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  background: "#F7F7F7",
+                }}
+              >
+                <input
+                  type="password"
+                  placeholder="Nome do banco"
+                  style={{ ...inputStyle, width: "100%" }}
+                />
+                <button style={buttonStyle}>Cadastrar</button>
+              </div>
+            </div>
+          </div>
+          <div style={{ ...cardWidth }}>
+            <div style={cardStyle}>
+              <div onClick={toggleCadastrarBanco} style={titleStyle}>
+                Lista de bancos
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  background: "#F7F7F7",
+                }}
+              >
+                <Box sx={{ width: "100%" }}>
+                  <button className="botao-dashboard-config">Excl. Selec.</button>
+                  <DataGrid
+                    rows={[{ id: 1, col1: "Hello", col2: "World" }]}
+                    columns={[
+                      { field: "col1", headerName: "Column 1", width: 150 },
+                      { field: "col2", headerName: "Column 2", width: 150 },
+                    ]}
+                    initialState={{
+                      pagination: {
+                        paginationModel: {
+                          pageSize: 25,
+                        },
+                      },
+                    }}
+                    pageSizeOptions={[25]}
+                    checkboxSelection
+                    disableRowSelectionOnClick
+                  />
+                </Box>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  ) : (
+    <TelaCarregamento />
+  );
 };
 
 export default Config;
