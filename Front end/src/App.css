@@ -196,6 +196,22 @@
     background-color: #d1d1d1;
 }
 
+.botao-dashboard-config {
+  cursor: pointer;
+  border-radius: 5px;
+  color: red;
+  border: none;
+  font-weight: 800;
+  background-color: rgb(241, 241, 241);
+  font-size: 0.8rem;
+  margin: 0px 10px 1vh 0px;
+  padding: 5px 10px;
+}
+
+.botao-dashboard-config:hover {
+  background-color: #d1d1d1;
+}
+
 .comb-container {
     display: flex;
     /* justify-content: center; */
@@ -468,6 +484,15 @@ input:disabled {
 
 .MuiDataGrid-row {
     background-color: white;
+}
+
+.pages-logado-main-content-config {
+  padding: 6vh 0px 0px 0px;
+  display: flex;
+  height: 94vh;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 }
 
 .pages-logado-main-content {
