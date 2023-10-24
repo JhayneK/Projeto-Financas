@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import CadastroLogin from "./CadastroLogin";
-import TelaCarregamento from "../../components/TelaCarregamento/TelaCarregamento";
+
 
 export default function TelaLogin() {
     

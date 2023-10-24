@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 
+
 export default function HeaderLogado() {
     return(
         <div className="header">

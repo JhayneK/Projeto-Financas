@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiChevronDown } from "react-icons/fi";
 
+
 export default function HeaderLogado() {
     const [menuVisible, setMenuVisible] = useState(false);
     const [mouseOverMenu, setMouseOverMenu] = useState(false);

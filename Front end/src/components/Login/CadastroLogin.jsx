@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TelaLogin from "./TelaLogin";
 
+
 export default function CadastroLogin() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');

@@ -27,7 +27,7 @@ export default function Combustivel() {
     const [parcelamento, setParcelamento] = useState("");
 
     const dataHoraAtual = new Date().toISOString().slice(0, 16);
-    const dataAtual = new Date().getDate();
+    // const dataAtual = new Date().getDate();
     const [data, setData] = useState("");
 
     const [descricao, setDescricao] = useState("");
@@ -255,7 +255,7 @@ export default function Combustivel() {
                                 <label>Data</label>
                                 <input
                                     type="datetime-local"
-                                    defaultValue={dataAtual}
+                                    // defaultValue={dataAtual}
                                     value={data}
                                     max={dataHoraAtual}                                    
                                     onChange={(event) =>

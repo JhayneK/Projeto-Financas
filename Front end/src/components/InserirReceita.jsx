@@ -1,5 +1,4 @@
-import { useState,useEffect } from "react";
-import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
+import { useState } from "react";
 
 
 export default function InserirReceita({ onClose }) {

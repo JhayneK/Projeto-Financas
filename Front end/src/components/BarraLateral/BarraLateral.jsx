@@ -14,7 +14,7 @@ export default function Barralateral() {
                     <div className={`botoes-sidebar ${location.pathname === '/relatorio' ? 'active' : ''}`}>
                         <div style={{paddingLeft: "0.7vw", display: "flex", alignItems: "center"}}>
                             {/* <FaChartBar id="relatory-icon" className="botao-sidebar" color="black" /> */}
-                            <span class="material-symbols-outlined">bar_chart</span>
+                            <span className="material-symbols-outlined">bar_chart</span>
                             <span style={{marginLeft: "10px"}}>&nbsp;Relatórios</span>
                         </div>
                     </div>
@@ -23,7 +23,7 @@ export default function Barralateral() {
                     <div className={`botoes-sidebar ${location.pathname === '/combustivel' ? 'active' : ''}`}>
                         <div style={{paddingLeft: "0.7vw", display: "flex", alignItems: "center"}}>
                             {/* <FaGasPump id="gasolina-icon" className="botao-sidebar" color="black" /> */}
-                            <span class="material-symbols-outlined">local_gas_station</span>
+                            <span className="material-symbols-outlined">local_gas_station</span>
                             <span style={{marginLeft: "14px"}}>Combustível</span>
                         </div>
                     </div>
@@ -32,7 +32,7 @@ export default function Barralateral() {
                     <div className={`botoes-sidebar ${location.pathname === '/receitas' ? 'active' : ''}`}>
                         <div style={{paddingLeft: "0.7vw", display: "flex", alignItems: "center"}}>
                             {/* <FaRegMoneyBillAlt id="receitas-icon" className="botao-sidebar" color="black" /> */}
-                            <span class="material-symbols-outlined">trending_up</span>
+                            <span className="material-symbols-outlined">trending_up</span>
                             <span style={{marginLeft: "10px"}}>&nbsp;Receitas</span>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ export default function Barralateral() {
                     <div className={`botoes-sidebar ${location.pathname === '/despesas' ? 'active' : ''}`}>
                         <div style={{paddingLeft: "0.7vw", display: "flex", alignItems: "center"}}>
                             {/* <BsGraphDownArrow id="despesas-icon" className="botao-sidebar" color="black" /> */}
-                            <span class="material-symbols-outlined">trending_down</span>
+                            <span className="material-symbols-outlined">trending_down</span>
                             <span style={{marginLeft: "9px"}}>&nbsp;Despesas</span>
                         </div>
                     </div>
@@ -51,7 +51,7 @@ export default function Barralateral() {
                     <div className={`botoes-sidebar ${location.pathname === '/config' ? 'active' : ''}`}>
                         <div style={{paddingLeft: "0.6vw", display: "flex", alignItems: "center"}}>
                             {/* <GoGear id="config-icon" className="botao-sidebar" color="black" /> */}
-                            <span class="material-symbols-outlined">settings</span>
+                            <span className="material-symbols-outlined">settings</span>
                             <span style={{marginLeft: "10px"}}>&nbsp;Configurações</span>
                         </div>
                     </div>
