@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 export default function InserirDespesa({ onClose }) {
     const [banco, setBanco] = useState("");
     const [categoria, setCategoria] = useState("");
@@ -119,10 +118,11 @@ export default function InserirDespesa({ onClose }) {
             ) {
                 throw new Error("Campo(s) não preenchido(s)");
             } else {
+
                 setValorValida(valor);
-                setExibirCarregamento(true);
 
                 if (!parcelamento) {
+
                     if (metodoPagamento === "PIX") {
                         setParcelamentoValida(parcelamento);
                     }
@@ -130,18 +130,16 @@ export default function InserirDespesa({ onClose }) {
                     throw new Error("Campo(s) não preenchido(s)");
                 }
             }
+
             // Valores em sua devida TIPAGEM, as outras variáveis estão certas
+            const valorValidado = parseFloat(valorValida);
+            const parcelamentoValidado = parseInt(parcelamentoValida);
 
-            setTimeout(() => {
-                // Valores em sua devida TIPAGEM, as outras variáveis estão certas
-                const valorValidado = parseFloat(valorValida);
-                const parcelamentoValidado = parseInt(parcelamentoValida);
-                setExibirCarregamento(false);
+            // Enviar para o banco de dados
+            onClose(); // fecha o componente
 
-                // Enviar para o banco de dados
-                onClose(); // fecha o componente
-                alert("Registro inserido com sucesso!");
-            }, 2000); // Simula o carregamento por 2 segundos (ajuste conforme necessário)
+            alert("Registro inserido com sucesso!");
+
         } catch {
             // Atualize o estado dos campos vazios com base em quais estão vazios
             setCamposVazios({
@@ -158,7 +156,6 @@ export default function InserirDespesa({ onClose }) {
     return (
         <div className="tela-inserir">
             <div className="caixa-cadastro fadeInDown">
-                {/* <div className={`tela-inserir ${isOpen ? "" : "fadeUp"}`}> */}
                 <div className="redimensionamento-cadastro">
                     <div className="caixa-cadastro-coluna">
                         <div className="caixa-cadastro-alinhamento">

@@ -64,22 +64,14 @@ export default function InserirReceita({ onClose }) {
                 throw new Error("Campo(s) não preenchido(s)");
             } else {
                 setValorValida(valor)
-                setExibirCarregamento(true);
-
             }
-
-            // Valores em sua devida TIPAGEM, as outras variáveis estão certas
-            setTimeout(() => {
 
             const valorValidado = parseFloat(valorValida);
 
             // Enviar para o banco de dados
             onClose();  // fecha o componente
-            setExibirCarregamento(false);
 
             alert("Registro inserido com sucesso!");
-
-        }, 2000); // Simula o carregamento por 2 segundos (ajuste conforme necessário)
 
         } catch {
             // Atualize o estado dos campos vazios com base em quais estão vazios
