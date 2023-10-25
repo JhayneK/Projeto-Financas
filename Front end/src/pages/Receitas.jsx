@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
-import Tabela from "../components/Tabela/TabelaReceita";
+import TabelaReceita from "../components/Tabela/TabelaReceita";
 import InserirReceita from "../components/InserirReceita";
 import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
+import { useTabelaSelectContext } from "../context/TabelaSelectContext";
+
 
 export default function Receitas() {
+
     useEffect(() => {
         document.title = "Receitas";
     }, []);
@@ -27,6 +30,8 @@ export default function Receitas() {
         setExibirCadastro(false);
     };
 
+    // ID das linhas selecionadas
+    const { idRow } = useTabelaSelectContext();
 
     return !exibirCarregamento?(
         <div className="page-container">
@@ -39,7 +44,7 @@ export default function Receitas() {
                         <button className="botao-dashboard">EDITAR</button>
                         <button className="botao-dashboard">DELETAR SELEC.</button>
                     </div>
-                    <Tabela />
+                    <TabelaReceita />
                 </div>
             </div>
             {exibirCadastro && (

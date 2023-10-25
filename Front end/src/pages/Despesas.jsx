@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import Tabela from "../components/Tabela/TabelaDespesa"
+import TabelaDespesa from "../components/Tabela/TabelaDespesa"
 import InserirDespesa from "../components/InserirDespesa";
-// import { AiOutlineReload } from "react-icons/ai";  // Reload icon
 import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
+import { useTabelaSelectContext } from "../context/TabelaSelectContext";
+
 
 export default function Despesas() {
 
@@ -29,6 +30,9 @@ export default function Despesas() {
         setExibirCadastro(false);
     };
 
+    // ID das linhas selecionadas
+    const { idRow } = useTabelaSelectContext();
+
     return !exibirCarregamento?(
         <div className="page-container">
             <div className="pages-logado-main-content" style={{paddingLeft: "3vw"}}>
@@ -40,7 +44,7 @@ export default function Despesas() {
                         <button className="botao-dashboard">EDITAR</button>
                         <button className="botao-dashboard">DELETAR SELEC.</button>
                     </div>
-                    <Tabela />
+                    <TabelaDespesa />
                 </div>
             </div>
             {exibirCadastro && (
