@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
+import { useTabelaSelectContext } from "../context/TabelaSelectContext";
 
 
 export default function CadastroBanco() {
@@ -67,6 +68,15 @@ export default function CadastroBanco() {
         banco: row.BANCO,
     }));
 
+    const [linhaSelecionada, setLinhaSelecionada] = useState([]);
+
+    const { idRow, setIdRow } = useTabelaSelectContext();
+
+    // Definindo idRow = linhaSelecionada
+    useEffect(() => {
+        setIdRow(linhaSelecionada);
+    }, [linhaSelecionada, setIdRow]);
+
     return (
         <div>
             <div style={{ display: "inline-block", margin: "0px 4rem" }}>
@@ -101,6 +111,10 @@ export default function CadastroBanco() {
                         <DataGrid
                             rows={rows}
                             columns={columns}
+                            rowSelectionModel={linhaSelecionada}
+                            onRowSelectionModelChange={(novaSelecao) => {
+                                setLinhaSelecionada(novaSelecao);
+                            }}
                             initialState={{
                                 pagination: {
                                     paginationModel: {
