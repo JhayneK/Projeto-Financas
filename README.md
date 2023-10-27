@@ -40,7 +40,7 @@ Luiz Otávio - [Perfil](https://github.com/luizotavio-vieira)
 </div>
 
 # Diagrama Físico - Banco de Dados
-![fetchdemo](https://github.com/luigimilanez/Projeto-Financas/assets/89088603/4171b05d-7a3b-4a30-8560-097c302b8952)
+![fetchdemo](https://github.com/luigimilanez/Projeto-Financas/assets/89088603/9b9be75c-7ba4-44ef-822d-94aa6836dcb8)
 
 # Link dos Protótipos
 <code>[Link dos Protótipos](https://www.figma.com/file/MVENHPKiW3hbVP2YcrOlwu/Projeto-BackEnd---Finan%C3%A7as?type=design&node-id=0-1&mode=design&t=w0YHmROMTSNQO5Uf-0)</code>
