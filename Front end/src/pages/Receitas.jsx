@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import TabelaReceita from "../components/Tabela/TabelaReceita";
-import InserirReceita from "../components/InserirReceita";
+import InserirReceita from "../components/Receitas/InserirReceita";
 import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
 import { useTabelaSelectContext } from "../context/TabelaSelectContext";
-import VisualizarReceita from "../components/VisualizarReceita";
+import VisualizarReceita from "../components/Receitas/VisualizarReceita";
+import EditarReceita from "../components/Receitas/EditarReceita";
 
 export default function Receitas() {
     useEffect(() => {
@@ -21,6 +22,7 @@ export default function Receitas() {
 
     const [exibirCadastro, setExibirCadastro] = useState(false);
     const [exibirVisualizar, setExibirVisualizar] = useState(false);
+    const [exibirEditar, setExibirEditar] = useState(false);
 
     const handleAbrirCadastro = () => {
         setExibirCadastro(true);
@@ -44,6 +46,22 @@ export default function Receitas() {
 
     const handleFecharVisualizar = () => {
         setExibirVisualizar(false);
+    };
+
+    const handleAbrirEditar = () => {
+        if (idRow.length < 1) {
+            alert("É necessário selecionar uma linha para poder editar.");
+        } else if (idRow.length === 1) {
+            setExibirEditar(true);
+        } else {
+            alert(
+                "É necessário selecionar apenas uma linha para poder editar."
+            );
+        }
+    };
+
+    const handleFecharEditar = () => {
+        setExibirEditar(false);
     };
 
     // ID das linhas selecionadas
@@ -70,7 +88,7 @@ export default function Receitas() {
                         >
                             VISUALIZAR
                         </button>
-                        <button className="botao-dashboard">EDITAR</button>
+                        <button onClick={handleAbrirEditar} className="botao-dashboard">EDITAR</button>
                         <button className="botao-dashboard">
                             DELETAR SELEC.
                         </button>
@@ -85,6 +103,12 @@ export default function Receitas() {
                 <VisualizarReceita
                     lineId={idRow}
                     onClose={handleFecharVisualizar}
+                />
+            )}
+            {exibirEditar && (
+                <EditarReceita
+                    lineId={idRow}
+                    onClose={handleFecharEditar}
                 />
             )}
         </div>

@@ -490,7 +490,7 @@ input:disabled {
     align-items: center;
     /* background-color: white; */
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .header-config-content {
@@ -509,7 +509,8 @@ input:disabled {
 }
 
 .header-config-diretorio:hover {
-    border-bottom: 2px solid black;
+    /* border-bottom: 2px solid rgb(189, 189, 189); */
+    background-color: rgb(211, 211, 211);
 }
 
 .config-main-content {

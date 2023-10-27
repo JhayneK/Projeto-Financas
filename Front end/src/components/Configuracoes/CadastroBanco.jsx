@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
-import { useTabelaSelectContext } from "../context/TabelaSelectContext";
+import { useTabelaSelectContext } from "../../context/TabelaSelectContext";
 
 
 export default function CadastroBanco() {

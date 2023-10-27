@@ -81,7 +81,7 @@ export default function InserirDespesa({ onClose }) {
         const replacedValor = inputValor.replace(/,/g, ".");
 
         // Verificar se o valor é vazio ou contém apenas números e um único ponto ou vírgula
-        if (inputValor === "" || /^[0-9]+(\.|,)?[0-9]*$/.test(replacedValor)) {
+        if (inputValor === "" || /^[0-9]+(\.|,)?[0-9]{0,2}$/.test(replacedValor)) {
             setValorError(""); // Limpar erro
             setValor(replacedValor);
         }
@@ -207,7 +207,7 @@ export default function InserirDespesa({ onClose }) {
                                                 ? "campo-vazio"
                                                 : ""
                                         }`}
-                                        name="categora"
+                                        name="categoria"
                                         id=""
                                         value={categoria}
                                         onChange={handleCategoriaChange}

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import TabelaDespesa from "../components/Tabela/TabelaDespesa";
-import InserirDespesa from "../components/InserirDespesa";
-import VisualizarDespesa from "../components/VisualizarDespesa";
+import InserirDespesa from "../components/Despesa/InserirDespesa";
+import VisualizarDespesa from "../components/Despesa/VisualizarDespesa";
 import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
 import { useTabelaSelectContext } from "../context/TabelaSelectContext";
+import EditarDespesa from "../components/Despesa/EditarDespesa";
 
 export default function Despesas() {
     useEffect(() => {
@@ -21,6 +22,7 @@ export default function Despesas() {
 
     const [exibirCadastro, setExibirCadastro] = useState(false);
     const [exibirVisualizar, setExibirVizualizar] = useState(false);
+    const [exibirEditar, setExibirEditar] = useState(false);
 
     const handleAbrirCadastro = () => {
         setExibirCadastro(true);
@@ -44,6 +46,22 @@ export default function Despesas() {
 
     const handleFecharVisualizar = () => {
         setExibirVizualizar(false);
+    };
+    
+    const handleAbrirEditar = () => {
+        if (idRow.length < 1) {
+            alert("É necessário selecionar uma linha para poder editar.");
+        } else if (idRow.length === 1) {
+            setExibirEditar(true);
+        } else {
+            alert(
+                "É necessário selecionar APENAS uma linha para poder editar."
+            );
+        }
+    };
+
+    const handleFecharEditar = () => {
+        setExibirEditar(false);
     };
 
     // ID das linhas selecionadas
@@ -70,7 +88,7 @@ export default function Despesas() {
                         >
                             VISUALIZAR
                         </button>
-                        <button className="botao-dashboard">EDITAR</button>
+                        <button onClick={handleAbrirEditar} className="botao-dashboard">EDITAR</button>
                         <button className="botao-dashboard">
                             DELETAR SELEC.
                         </button>
@@ -85,6 +103,12 @@ export default function Despesas() {
                 <VisualizarDespesa
                     lineId={idRow}
                     onClose={handleFecharVisualizar}
+                />
+            )}
+            {exibirEditar && (
+                <EditarDespesa
+                    lineId={idRow}
+                    onClose={handleFecharEditar}
                 />
             )}
         </div>

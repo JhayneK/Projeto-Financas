@@ -28,12 +28,12 @@ export default function Config() {
 
     const styleRedefinirSenha = {
         fontSize: "0.74vw",
-        borderBottom: redefinirSenha ? "2px solid black" : "none",
+        borderBottom: redefinirSenha ? "2px solid rgb(209, 209, 209)" : "none",
     }
 
     const styleCadastrarBanco = {
         fontSize: "0.74vw",
-        borderBottom: !redefinirSenha ? "2px solid black" : "none",
+        borderBottom: !redefinirSenha ? "2px solid rgb(209, 209, 209)" : "none",
     }
 
     return !exibirCarregamento ? (
