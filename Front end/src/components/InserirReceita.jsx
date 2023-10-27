@@ -120,7 +120,7 @@ export default function InserirReceita({ onClose }) {
                                 <div className="caixa-cadastro-espacamento">
                                     <label>Categoria</label>
                                     <select style={{width: "13.7vw"}} className={`${camposVazios.categoria ? 'campo-vazio' : ''}`} 
-                                    name="categora" 
+                                    name="categoria" 
                                     id="" 
                                     value={categoria} 
                                     onChange={handleCategoriaChange}>
