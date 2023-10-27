@@ -338,12 +338,11 @@ export default function Combustivel() {
                                     <p
                                         style={{
                                             color: "red",
-                                            marginTop: "0.5vh",
+                                            marginTop: "5.5vh",
                                             maxWidth: "16vw",
                                             fontSize: "1.6vh",
                                             fontWeight: "bold",
                                             position: "absolute",
-                                            marginTop: "3.15rem"
                                         }}
                                     >
                                         {parcelamentoError}
