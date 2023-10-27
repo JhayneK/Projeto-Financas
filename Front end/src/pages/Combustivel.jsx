@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
 
-
 export default function Combustivel() {
     useEffect(() => {
         document.title = "Combustível";
@@ -11,20 +10,22 @@ export default function Combustivel() {
 
     useEffect(() => {
         setTimeout(() => {
-          // Após o carregamento (simulação), você pode redirecionar o usuário ou executar outras ações necessárias
-          setExibirCarregamento(false); // Desativa a tela de carregamento
+            // Após o carregamento (simulação), você pode redirecionar o usuário ou executar outras ações necessárias
+            setExibirCarregamento(false); // Desativa a tela de carregamento
         }, 350); // Simula o carregamento por 2 segundos (ajuste conforme necessário)
-      }, []);
+    }, []);
 
     const [distPercorrida, setDistPercorrida] = useState("");
     const [consumoMedio, setConsumoMedio] = useState("");
-    const [precoGasolina, setPrecoGasolina] = useState("");
+    const [precoCombustivel, setPrecoCombustivel] = useState("");
 
     const [banco, setBanco] = useState("");
-    const [categoria, setCategoria] = useState("");
+    const [categoria, setCategoria] = useState("Combustível");
     // const [valor, setValor] = useState("");
     const [metodoPagamento, setMetodoPagamento] = useState("");
     const [parcelamento, setParcelamento] = useState("");
+    const [parcelamentoError, setParcelamentoError] = useState("");
+    const parcelamentoDesabilitado = metodoPagamento === "pix";
 
     const dataHoraAtual = new Date().toISOString().slice(0, 16);
     // const dataAtual = new Date().getDate();
@@ -33,8 +34,20 @@ export default function Combustivel() {
     const [descricao, setDescricao] = useState("");
 
     const valor =
-        (parseFloat(precoGasolina) / parseFloat(consumoMedio)) *
+        (parseFloat(precoCombustivel) / parseFloat(consumoMedio)) *
         parseFloat(distPercorrida);
+
+    const [camposPreenchidos, setCamposPreenchidos] = useState({
+        distPercorrida: true,
+        consumoMedio: true,
+        precoCombustivel: true,
+        parcelamento: true,
+        banco: true,
+        // categoria: true,
+        metodoPagamento: true,
+        descricao: true,
+        data: true,
+    });
 
     const filtroFloat = (event, setter) => {
         const inputValue = event.target.value;
@@ -70,59 +83,90 @@ export default function Combustivel() {
         setter(formattedInput);
     };
 
+    // Função para atualizar o estado de camposPreenchidos
+    const atualizarCamposPreenchidos = () => {
+        setCamposPreenchidos({
+            distPercorrida: !!distPercorrida,
+            consumoMedio: !!consumoMedio,
+            precoCombustivel: !!precoCombustivel,
+            banco: !!banco,
+            parcelamento: !!parcelamento,
+            metodoPagamento: !!metodoPagamento,
+            descricao: !!descricao,
+            data: !!data,
+        });
+    };
+
+    const handleParcelamentoChange = (event) => {
+        const inputParcelamento = event.target.value;
+
+        // Remova pontos e vírgulas do valor de entrada
+        const sanitizedParcelamento = inputParcelamento.replace(/[.,]/g, "");
+
+        // Verifique se o valor é vazio ou contém apenas números
+        if (
+            sanitizedParcelamento === "" ||
+            /^\d+$/.test(sanitizedParcelamento)
+        ) {
+            const parsedParcelamento = parseInt(sanitizedParcelamento, 10);
+            // Verificar se o valor está dentro do limite de 1 a 24
+            if (
+                sanitizedParcelamento === "" ||
+                (parsedParcelamento >= 1 && parsedParcelamento <= 24)
+            ) {
+                setParcelamentoError(""); // Limpar erro
+                setParcelamento(sanitizedParcelamento);
+            } else {
+                setParcelamentoError("O parcelamento deve estar entre 1 e 24");
+            }
+        } else {
+            setParcelamentoError("O parcelamento deve estar entre 1 e 24");
+        }
+    };
+
     const adicionarDespesa = () => {
         try {
             // validação de campos nulos
-            // if (!distPercorrida || !precoGasolina || !consumoMedio || !banco || !categoria || !metodoPagamento || !descricao || !data) {
-            //     throw new Error("Campo(s) não preenchido(s)");
-            // }
+            atualizarCamposPreenchidos();
 
-            alert("Despesa adicionada com sucesso!");
-            limpaCampos();
+            // Verificação se todos os campos estão preenchidos
+            if (
+                distPercorrida &&
+                consumoMedio &&
+                precoCombustivel &&
+                banco &&
+                metodoPagamento &&
+                descricao &&
+                data
+            ) {
+                // Criação do JSON e envio ao banco de dados via API
+
+                alert("Despesa adicionada com sucesso!");
+                limpaCampos();
+            } else {
+                // throw new Error("Campo(s) não preenchido(s)");
+            }
         } catch {
-            // updateEmptyFieldClasses();
+            console.error("Campo(s) não preenchido(s)");
         }
     };
 
     const limpaCampos = () => {
         setDistPercorrida("");
         setConsumoMedio("");
-        setPrecoGasolina("");
+        setPrecoCombustivel("");
         setBanco("");
         setMetodoPagamento("");
         setParcelamento("");
         setData("");
         setDescricao("");
+        setParcelamentoError("");
     };
 
-    // const updateEmptyFieldClasses = () => {
-    //     const fieldsToUpdate = [
-    //         distPercorrida,
-    //         consumoMedio,
-    //         precoGasolina,
-    //         banco,
-    //         metodoPagamento,
-    //         parcelamento,
-    //         data,
-    //         descricao,
-    //     ];
-
-    //     fieldsToUpdate.forEach((field, index) => {
-    //         const element = document.querySelectorAll(
-    //             ".form-comb input, .form-comb select, .form-comb textarea"
-    //         )[index];
-    //         if (!field) {
-    //             element.classList.add("campo-vazio");
-    //         } else {
-    //             element.classList.remove("campo-vazio");
-    //         }
-    //     });
-    // };
-
-    return !exibirCarregamento?(
+    return !exibirCarregamento ? (
         <div className="page-container">
             <div className="pages-logado-main-content">
-                <div className="comb-container fadeInDown">
+                <div className="comb-container">
                     <div className="caixa-gasolina">
                         <h1
                             style={{
@@ -139,38 +183,53 @@ export default function Combustivel() {
                             <div className="form-comb">
                                 <label>Distância Percorrida (KM)</label>
                                 <input
+                                    className={`${
+                                        !camposPreenchidos.distPercorrida
+                                            ? "campo-vazio"
+                                            : ""
+                                    }`}
                                     type="text"
                                     value={distPercorrida}
                                     onChange={(event) =>
                                         filtroFloat(event, setDistPercorrida)
                                     }
+                                    style={{ outline: "none" }}
                                 />
                             </div>
                             <div className="form-comb">
                                 <label>Consumo médio do veículo (KM/L)</label>
                                 <input
+                                    className={`${
+                                        !camposPreenchidos.consumoMedio
+                                            ? "campo-vazio"
+                                            : ""
+                                    }`}
                                     type="text"
                                     value={consumoMedio}
                                     onChange={(event) =>
                                         filtroFloat(event, setConsumoMedio)
                                     }
+                                    style={{ outline: "none" }}
                                 />
                             </div>
                             <div className="form-comb">
                                 <label>Preço por litro (R$/L)</label>
                                 <input
+                                    className={`${
+                                        !camposPreenchidos.precoCombustivel
+                                            ? "campo-vazio"
+                                            : ""
+                                    }`}
                                     type="text"
-                                    value={precoGasolina}
+                                    value={precoCombustivel}
                                     onChange={(event) =>
-                                        filtroFloat(event, setPrecoGasolina)
+                                        filtroFloat(event, setPrecoCombustivel)
                                     }
+                                    style={{ outline: "none" }}
                                 />
                             </div>
                             <div className="form-comb-buttons">
-                                {/* <div> */}
-                                {/* <button>Calcular</button> */}
                                 <button onClick={limpaCampos}>Limpar</button>
-                                {/* </div> */}
                             </div>
                         </div>
                         <hr style={{ marginTop: "6vh" }} />
@@ -188,12 +247,18 @@ export default function Combustivel() {
                             <div className="form-comb">
                                 <label>Banco</label>
                                 <select
+                                    className={`${
+                                        !camposPreenchidos.banco
+                                            ? "campo-vazio"
+                                            : ""
+                                    }`}
                                     name="banco"
                                     id=""
                                     value={banco}
                                     onChange={(event) => {
                                         setBanco(event.target.value);
                                     }}
+                                    style={{ outline: "none" }}
                                 >
                                     <option value="">Selecione</option>
                                     <option value="nubank">NuBank</option>
@@ -205,22 +270,32 @@ export default function Combustivel() {
                                     name="categoria"
                                     id=""
                                     value={categoria}
-                                    onChange={(event) => {
-                                        setCategoria(event.target.value);
-                                    }}
+                                    style={{ outline: "none" }}
+                                    readOnly
+                                    // onChange={(event) => {
+                                    //     setCategoria(event.target.value);
+                                    // }}
                                 >
-                                    <option value="gasolina">Gasolina</option>
+                                    <option value="combustivel">
+                                        Combustível
+                                    </option>
                                 </select>
                             </div>
                             <div className="form-comb">
                                 <label>Método de Pagamento</label>
                                 <select
+                                    className={`${
+                                        !camposPreenchidos.metodoPagamento
+                                            ? "campo-vazio"
+                                            : ""
+                                    }`}
                                     name="metodopagamento"
                                     id=""
                                     value={metodoPagamento}
                                     onChange={(event) => {
                                         setMetodoPagamento(event.target.value);
                                     }}
+                                    style={{ outline: "none" }}
                                 >
                                     <option value="">Selecione</option>
                                     <option value="pix">PIX</option>
@@ -233,47 +308,84 @@ export default function Combustivel() {
                                     value={
                                         !distPercorrida ||
                                         !consumoMedio ||
-                                        !precoGasolina
+                                        !precoCombustivel
                                             ? 0
                                             : valor.toFixed(2)
                                     }
+                                    style={{ outline: "none" }}
                                     readOnly
                                 />
                             </div>
                             <div className="form-comb">
-                                <label>Parcelamento</label>
+                                <label>Parcelamento (x)</label>
                                 <input
+                                    className={`${
+                                        !camposPreenchidos.parcelamento &&
+                                        !parcelamentoDesabilitado
+                                            ? "campo-vazio"
+                                            : ""
+                                    }`}
                                     type="text"
                                     value={parcelamento}
-                                    onChange={(event) => {
-                                        setParcelamento(event.target.value);
-                                    }}
-                                    disabled={metodoPagamento === "pix"}
+                                    // onChange={(event) => {
+                                    //     setParcelamento(event.target.value);
+                                    // }}
+                                    onChange={handleParcelamentoChange}
+                                    style={{ outline: "none" }}
+                                    disabled={parcelamentoDesabilitado}
                                 />
+                                {parcelamentoError && (
+                                    <p
+                                        style={{
+                                            color: "red",
+                                            marginTop: "0.5vh",
+                                            maxWidth: "16vw",
+                                            fontSize: "1.6vh",
+                                            fontWeight: "bold",
+                                            position: "absolute",
+                                            marginTop: "3.15rem"
+                                        }}
+                                    >
+                                        {parcelamentoError}
+                                    </p>
+                                )}
                             </div>
                             <div className="form-comb">
                                 <label>Data</label>
                                 <input
+                                    className={`${
+                                        !camposPreenchidos.data
+                                            ? "campo-vazio"
+                                            : ""
+                                    }`}
                                     type="datetime-local"
                                     // defaultValue={dataAtual}
                                     value={data}
-                                    max={dataHoraAtual}                                    
+                                    max={dataHoraAtual}
                                     onChange={(event) =>
                                         setData(event.target.value)
                                     }
+                                    style={{ outline: "none" }}
                                 />
                             </div>
                             <div className="form-comb">
                                 <label>Descrição</label>
                                 <textarea
+                                    className={`${
+                                        !camposPreenchidos.descricao
+                                            ? "campo-vazio"
+                                            : ""
+                                    }`}
                                     value={descricao}
                                     onChange={(event) =>
                                         setDescricao(event.target.value)
                                     }
+                                    maxLength={300}
+                                    style={{ outline: "none" }}
                                 />
                             </div>
                             <div
-                                style={{ marginTop: "24%" }}
+                                style={{ marginTop: "12.5%" }}
                                 className="form-comb-buttons"
                             >
                                 <button onClick={adicionarDespesa}>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
-import RedefinirSenha from "../components/RedefinirSenha";
-import CadastroBanco from "../components/CadastroBanco";
+import RedefinirSenha from "../components/Configuracoes/RedefinirSenha";
+import CadastroBanco from "../components/Configuracoes/CadastroBanco";
 
 export default function Config() {
     useEffect(() => {

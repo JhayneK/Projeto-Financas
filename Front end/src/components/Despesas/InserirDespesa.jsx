@@ -81,7 +81,10 @@ export default function InserirDespesa({ onClose }) {
         const replacedValor = inputValor.replace(/,/g, ".");
 
         // Verificar se o valor é vazio ou contém apenas números e um único ponto ou vírgula
-        if (inputValor === "" || /^[0-9]+(\.|,)?[0-9]{0,2}$/.test(replacedValor)) {
+        if (
+            inputValor === "" ||
+            /^[0-9]+(\.|,)?[0-9]{0,2}$/.test(replacedValor)
+        ) {
             setValorError(""); // Limpar erro
             setValor(replacedValor);
         }
@@ -118,11 +121,9 @@ export default function InserirDespesa({ onClose }) {
             ) {
                 throw new Error("Campo(s) não preenchido(s)");
             } else {
-
                 setValorValida(valor);
 
                 if (!parcelamento) {
-
                     if (metodoPagamento === "PIX") {
                         setParcelamentoValida(parcelamento);
                     }
@@ -139,7 +140,6 @@ export default function InserirDespesa({ onClose }) {
             onClose(); // fecha o componente
 
             alert("Registro inserido com sucesso!");
-
         } catch {
             // Atualize o estado dos campos vazios com base em quais estão vazios
             setCamposVazios({
@@ -213,8 +213,8 @@ export default function InserirDespesa({ onClose }) {
                                         onChange={handleCategoriaChange}
                                     >
                                         <option value="">Selecione</option>
-                                        <option value="gasolina">
-                                            Gasolina
+                                        <option value="combustivel">
+                                            Combustível
                                         </option>
                                     </select>
                                 </div>
@@ -222,7 +222,7 @@ export default function InserirDespesa({ onClose }) {
                                     className="caixa-cadastro-espacamento"
                                     style={{ marginTop: "8vh" }}
                                 >
-                                    <label>Parcelamento</label>
+                                    <label>Parcelamento (x)</label>
                                     <input
                                         className={`${
                                             camposVazios.parcelamento &&
@@ -235,16 +235,15 @@ export default function InserirDespesa({ onClose }) {
                                         onChange={handleParcelamentoChange}
                                         disabled={metodoPagamento === "pix"}
                                     />
-                                    <p
-                                        style={{
+
+                                    {parcelamentoError && (
+                                        <p style={{
                                             color: "red",
                                             marginTop: "0.5vh",
                                             maxWidth: "13vw",
                                             fontSize: "1.6vh",
-                                        }}
-                                    >
-                                        {parcelamentoError}
-                                    </p>
+                                        }}>{parcelamentoError}</p>
+                                    )}
                                 </div>
                             </div>
                         </div>

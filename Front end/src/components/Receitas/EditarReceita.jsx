@@ -107,7 +107,7 @@ export default function InserirDespesa({ onClose }) {
         setParcelamentoError("");
     };
 
-    const inserir = () => {
+    const atualizar = () => {
         try {
             // Implementar sistema para validar qual é o ID do banco
             // de acordo com o ID do usuário
@@ -140,7 +140,7 @@ export default function InserirDespesa({ onClose }) {
             // Enviar para o banco de dados
             onClose(); // fecha o componente
 
-            alert("Registro inserido com sucesso!");
+            alert("Registro atualizado com sucesso!");
 
         } catch {
             // Atualize o estado dos campos vazios com base em quais estão vazios
@@ -215,8 +215,8 @@ export default function InserirDespesa({ onClose }) {
                                         onChange={handleCategoriaChange}
                                     >
                                         <option value="">Selecione</option>
-                                        <option value="gasolina">
-                                            Gasolina
+                                        <option value="combustivel">
+                                            Combustível
                                         </option>
                                     </select>
                                 </div>
@@ -294,7 +294,7 @@ export default function InserirDespesa({ onClose }) {
                     </div>
                 </div>
                 <div className="botoes-cadastro">
-                    <button onClick={inserir}>Inserir</button>
+                    <button onClick={atualizar}>Atualizar</button>
                     <button onClick={onClose}>Cancelar</button>
                     <button
                         onClick={limparCampos}

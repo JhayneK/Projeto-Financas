@@ -125,7 +125,7 @@ export default function InserirReceita({ onClose }) {
                                     value={categoria} 
                                     onChange={handleCategoriaChange}>
                                         <option value="">Selecione</option>
-                                        <option value="gasolina">Gasolina</option>
+                                        <option value="combustivel">Combustível</option>
                                     </select>
                                 </div>
                                 <div className="caixa-cadastro-espacamento-receita" style={{marginTop: "8vh"}}>

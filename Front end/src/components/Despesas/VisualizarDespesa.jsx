@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
 export default function VisualizarDespesa({ onClose, lineId }) {
-  
     // Validação para caso tiver várias linhas selecionadas na tabela
 
     const [banco, setBanco] = useState("");
@@ -15,10 +13,13 @@ export default function VisualizarDespesa({ onClose, lineId }) {
 
     useEffect(() => {
         // Puxar da API
-        axios.get("/dados_randomicos.json")
+        axios
+            .get("/dados_randomicos.json")
             .then((response) => {
                 // Puxando pelo ID do ITEM
-                const item = response.data.fluxo.find((item) => item.ID === lineId[0])
+                const item = response.data.fluxo.find(
+                    (item) => item.ID === lineId[0]
+                );
 
                 // Verificar se o item foi encontrado
                 if (item) {
@@ -31,13 +32,15 @@ export default function VisualizarDespesa({ onClose, lineId }) {
                     setDescricao(item.DESCRICAO);
                 } else {
                     // Nenhuma linha selecionada na tabela
-                    console.error("É necessário selecionar algum registro na tabela")
+                    console.error(
+                        "É necessário selecionar algum registro na tabela"
+                    );
                 }
             })
             .catch((error) => {
-                console.error("Erro ao obter os dados do JSON")
-            })
-    }, [lineId])  // Adicione lineId como dependência para que a consulta seja acionada quando ele mudar
+                console.error("Erro ao obter os dados do JSON");
+            });
+    }, [lineId]); // Adicione lineId como dependência para que a consulta seja acionada quando ele mudar
 
     return (
         <div className="tela-inserir">
@@ -51,9 +54,10 @@ export default function VisualizarDespesa({ onClose, lineId }) {
                                     <select
                                         name="banco"
                                         id=""
-                                        value={banco} 
-                                        readOnly >
-                                            <option value={banco}>{banco}</option>
+                                        value={banco}
+                                        readOnly
+                                    >
+                                        <option value={banco}>{banco}</option>
                                     </select>
                                 </div>
                                 <div
@@ -63,8 +67,10 @@ export default function VisualizarDespesa({ onClose, lineId }) {
                                     <label>Valor</label>
                                     <input
                                         type="text"
-                                        value={valor} 
-                                        readOnly />                    
+                                        value={valor}
+                                        readOnly
+                                        style={{ outline: "none" }}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -77,16 +83,19 @@ export default function VisualizarDespesa({ onClose, lineId }) {
                                     <select
                                         name="categoria"
                                         id=""
-                                        value={categoria} 
-                                        readOnly >
-                                            <option value={categoria}>{categoria}</option>
+                                        value={categoria}
+                                        readOnly
+                                    >
+                                        <option value={categoria}>
+                                            {categoria}
+                                        </option>
                                     </select>
                                 </div>
                                 <div
                                     className="caixa-cadastro-espacamento"
                                     style={{ marginTop: "8vh" }}
                                 >
-                                    <label>Parcelamento</label>
+                                    <label>Parcelamento (x)</label>
                                     <input
                                         type="text"
                                         value={parcelamento}
@@ -104,9 +113,12 @@ export default function VisualizarDespesa({ onClose, lineId }) {
                                     <select
                                         name="metodopagamento"
                                         id=""
-                                        value={metodoPagamento} 
-                                        readOnly >
-                                            <option value={metodoPagamento}>{metodoPagamento}</option>
+                                        value={metodoPagamento}
+                                        readOnly
+                                    >
+                                        <option value={metodoPagamento}>
+                                            {metodoPagamento}
+                                        </option>
                                     </select>
                                 </div>
                                 <div

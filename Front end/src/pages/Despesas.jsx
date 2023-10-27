@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import TabelaDespesa from "../components/Tabela/TabelaDespesa";
-import InserirDespesa from "../components/Despesa/InserirDespesa";
-import VisualizarDespesa from "../components/Despesa/VisualizarDespesa";
+import InserirDespesa from "../components/Despesas/InserirDespesa";
+import VisualizarDespesa from "../components/Despesas/VisualizarDespesa";
 import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
 import { useTabelaSelectContext } from "../context/TabelaSelectContext";
-import EditarDespesa from "../components/Despesa/EditarDespesa";
+import EditarDespesa from "../components/Despesas/EditarDespesa";
+
 
 export default function Despesas() {
     useEffect(() => {

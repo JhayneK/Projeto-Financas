@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
 export default function EditarDespesa({ onClose, lineId }) {
     const [banco, setBanco] = useState("");
     const [categoria, setCategoria] = useState("");
@@ -83,7 +82,10 @@ export default function EditarDespesa({ onClose, lineId }) {
         const replacedValor = inputValor.replace(/,/g, ".");
 
         // Verificar se o valor é vazio ou contém apenas números e um único ponto ou vírgula
-        if (inputValor === "" || /^[0-9]+(\.|,)?[0-9]{0,2}$/.test(replacedValor)) {
+        if (
+            inputValor === "" ||
+            /^[0-9]+(\.|,)?[0-9]{0,2}$/.test(replacedValor)
+        ) {
             setValorError(""); // Limpar erro
             setValor(replacedValor);
         }
@@ -120,11 +122,9 @@ export default function EditarDespesa({ onClose, lineId }) {
             ) {
                 throw new Error("Campo(s) não preenchido(s)");
             } else {
-
                 setValorValida(valor);
 
                 if (!parcelamento) {
-
                     if (metodoPagamento === "PIX") {
                         setParcelamentoValida(parcelamento);
                     }
@@ -141,7 +141,6 @@ export default function EditarDespesa({ onClose, lineId }) {
             onClose(); // fecha o componente
 
             alert("Registro atualizado com sucesso!");
-
         } catch {
             // Atualize o estado dos campos vazios com base em quais estão vazios
             setCamposVazios({
@@ -157,10 +156,13 @@ export default function EditarDespesa({ onClose, lineId }) {
 
     useEffect(() => {
         // Puxar da API
-        axios.get("/dados_randomicos.json")
+        axios
+            .get("/dados_randomicos.json")
             .then((response) => {
                 // Puxando pelo ID do ITEM
-                const item = response.data.fluxo.find((item) => item.ID === lineId[0])
+                const item = response.data.fluxo.find(
+                    (item) => item.ID === lineId[0]
+                );
 
                 // Verificar se o item foi encontrado
                 if (item) {
@@ -173,13 +175,15 @@ export default function EditarDespesa({ onClose, lineId }) {
                     setDescricao(item.DESCRICAO);
                 } else {
                     // Nenhuma linha selecionada na tabela
-                    console.error("É necessário selecionar algum registro na tabela")
+                    console.error(
+                        "É necessário selecionar algum registro na tabela"
+                    );
                 }
             })
             .catch((error) => {
-                console.error("Erro ao obter os dados do JSON")
-            })
-    }, [lineId])  // Adicione lineId como dependência para que a consulta seja acionada quando ele mudar
+                console.error("Erro ao obter os dados do JSON");
+            });
+    }, [lineId]); // Adicione lineId como dependência para que a consulta seja acionada quando ele mudar
 
     return (
         <div className="tela-inserir">
@@ -241,10 +245,12 @@ export default function EditarDespesa({ onClose, lineId }) {
                                         value={categoria}
                                         onChange={handleCategoriaChange}
                                     >
-                                        <option value={categoria}>{categoria}</option>
+                                        <option value={categoria}>
+                                            {categoria}
+                                        </option>
                                         <option value="">Selecione</option>
-                                        <option value="gasolina">
-                                            Gasolina
+                                        <option value="combustivel">
+                                            Combustível
                                         </option>
                                     </select>
                                 </div>
@@ -252,7 +258,7 @@ export default function EditarDespesa({ onClose, lineId }) {
                                     className="caixa-cadastro-espacamento"
                                     style={{ marginTop: "8vh" }}
                                 >
-                                    <label>Parcelamento</label>
+                                    <label>Parcelamento (x)</label>
                                     <input
                                         className={`${
                                             camposVazios.parcelamento &&
@@ -265,16 +271,14 @@ export default function EditarDespesa({ onClose, lineId }) {
                                         onChange={handleParcelamentoChange}
                                         disabled={metodoPagamento === "pix"}
                                     />
-                                    <p
-                                        style={{
+                                    {parcelamentoError && (
+                                        <p style={{
                                             color: "red",
                                             marginTop: "0.5vh",
                                             maxWidth: "13vw",
                                             fontSize: "1.6vh",
-                                        }}
-                                    >
-                                        {parcelamentoError}
-                                    </p>
+                                        }}>{parcelamentoError}</p>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -295,7 +299,9 @@ export default function EditarDespesa({ onClose, lineId }) {
                                         value={metodoPagamento}
                                         onChange={handleMetodoPagamentoChange}
                                     >
-                                        <option value={metodoPagamento}>{metodoPagamento}</option>
+                                        <option value={metodoPagamento}>
+                                            {metodoPagamento}
+                                        </option>
                                         <option value="">Selecione</option>
                                         <option value="pix">PIX</option>
                                     </select>
