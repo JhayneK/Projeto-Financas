@@ -87,7 +87,7 @@ CREATE TABLE [fluxo]
  [id_banco]           int NOT NULL ,
  [id_metodo]          int NOT NULL ,
  [id_categoria]       int NOT NULL ,
- [parcelamento]       numeric(4,0) NULL ,
+ [parcelamento]       numeric(2,0) NULL ,
  [valor]              numeric(14,2) NOT NULL ,
  [data]               datetime NOT NULL ,
  [descricao]          varchar(300) NOT NULL ,
