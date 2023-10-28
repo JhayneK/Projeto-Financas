@@ -11,7 +11,7 @@ export default function InserirReceita({ onClose }) {
     const [valorError, setValorError] = useState("");
     const [valorValida, setValorValida] = useState("")
 
-    const [camposVazios, setCamposVazios] = useState({ banco: false, categoria: false, valor: false, descricao: false, parcelamento: false, metodoPagamento: false });
+    const [camposVazios, setCamposVazios] = useState({ banco: false, categoria: false, valor: false, descricao: false, metodoPagamento: false });
 
     const handleBancoChange = (event) => {
         setBanco(event.target.value);
