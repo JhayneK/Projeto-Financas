@@ -5,6 +5,7 @@ import VisualizarDespesa from "../components/Despesas/VisualizarDespesa";
 import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
 import { useTabelaSelectContext } from "../context/TabelaSelectContext";
 import EditarDespesa from "../components/Despesas/EditarDespesa";
+import axios from "axios";
 
 
 export default function Despesas() {
@@ -20,6 +21,36 @@ export default function Despesas() {
             setExibirCarregamento(false); // Desativa a tela de carregamento
         }, 350); // Simula o carregamento por 2 segundos (ajuste conforme necessário)
     }, []);
+
+    const [dadosDespesas, setDadosDespesas] = useState([]);
+    useEffect(() => {
+        axios
+            .get("/dados_randomicos.json")
+            .then((response) => {
+                setDadosDespesas(response.data.fluxo);
+            })
+            .catch((error) => {
+                console.error("Erro ao obter os dados do JSON");
+            });
+    }, []);
+
+    const [carregamentoTabela, setCarregamentoTabela] = useState(false);
+    const reload = () => {
+        setCarregamentoTabela(true);
+        
+        setTimeout(() => {
+            axios
+                .get("/dados_randomicos.json")
+                .then((response) => {
+                    setDadosDespesas(response.data.fluxo);
+                    setCarregamentoTabela(false);
+                })
+                .catch((error) => {
+                    setCarregamentoTabela(false);
+                    console.error("Erro ao obter os dados do JSON");
+                });
+        }, 350); // Aguarda 350 milissegundos antes de executar a função
+    };
 
     const [exibirCadastro, setExibirCadastro] = useState(false);
     const [exibirVisualizar, setExibirVizualizar] = useState(false);
@@ -76,7 +107,7 @@ export default function Despesas() {
             >
                 <div className="tabela">
                     <div className="botoes-dashboard">
-                        <button className="botao-dashboard">RELOAD</button>
+                        <button onClick={reload} className="botao-dashboard">RELOAD</button>
                         <button
                             onClick={handleAbrirCadastro}
                             className="botao-dashboard"
@@ -94,7 +125,8 @@ export default function Despesas() {
                             DELETAR SELEC.
                         </button>
                     </div>
-                    <TabelaDespesa />
+                    {carregamentoTabela === true ? <TelaCarregamento /> : null}
+                    <TabelaDespesa dados={dadosDespesas} />
                 </div>
             </div>
             {exibirCadastro && (

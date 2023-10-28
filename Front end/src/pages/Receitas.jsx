@@ -5,6 +5,7 @@ import TelaCarregamento from "../components/TelaCarregamento/TelaCarregamento";
 import { useTabelaSelectContext } from "../context/TabelaSelectContext";
 import VisualizarReceita from "../components/Receitas/VisualizarReceita";
 import EditarReceita from "../components/Receitas/EditarReceita";
+import axios from "axios";
 
 export default function Receitas() {
     useEffect(() => {
@@ -19,6 +20,37 @@ export default function Receitas() {
             setExibirCarregamento(false); // Desativa a tela de carregamento
         }, 350); // Simula o carregamento por 2 segundos (ajuste conforme necessário)
     }, []);
+
+    // Resgatando dados do JSON/API
+    const [dadosReceitas, setDadosReceitas] = useState([]);
+    useEffect(() => {
+        axios
+            .get("/dados_randomicos.json")
+            .then((response) => {
+                setDadosReceitas(response.data.fluxo);
+            })
+            .catch((error) => {
+                console.error("Erro ao obter os dados do JSON");
+            });
+    }, []);
+
+    const [carregamentoTabela, setCarregamentoTabela] = useState(false);
+    const reload = () => {
+        setCarregamentoTabela(true);
+        
+        setTimeout(() => {
+            axios
+                .get("/dados_randomicos.json")
+                .then((response) => {
+                    setDadosReceitas(response.data.fluxo);
+                    setCarregamentoTabela(false);
+                })
+                .catch((error) => {
+                    setCarregamentoTabela(false);
+                    console.error("Erro ao obter os dados do JSON");
+                });
+        }, 350); // Aguarda 350 milissegundos antes de executar a função
+    };
 
     const [exibirCadastro, setExibirCadastro] = useState(false);
     const [exibirVisualizar, setExibirVisualizar] = useState(false);
@@ -75,7 +107,9 @@ export default function Receitas() {
             >
                 <div className="tabela">
                     <div className="botoes-dashboard">
-                        <button className="botao-dashboard">RELOAD</button>
+                        <button onClick={reload} className="botao-dashboard">
+                            RELOAD
+                        </button>
                         <button
                             onClick={handleAbrirCadastro}
                             className="botao-dashboard"
@@ -88,12 +122,18 @@ export default function Receitas() {
                         >
                             VISUALIZAR
                         </button>
-                        <button onClick={handleAbrirEditar} className="botao-dashboard">EDITAR</button>
+                        <button
+                            onClick={handleAbrirEditar}
+                            className="botao-dashboard"
+                        >
+                            EDITAR
+                        </button>
                         <button className="botao-dashboard">
                             DELETAR SELEC.
                         </button>
                     </div>
-                    <TabelaReceita />
+                    {carregamentoTabela === true ? <TelaCarregamento /> : null}
+                    <TabelaReceita dados={dadosReceitas} />
                 </div>
             </div>
             {exibirCadastro && (
@@ -106,10 +146,7 @@ export default function Receitas() {
                 />
             )}
             {exibirEditar && (
-                <EditarReceita
-                    lineId={idRow}
-                    onClose={handleFecharEditar}
-                />
+                <EditarReceita lineId={idRow} onClose={handleFecharEditar} />
             )}
         </div>
     ) : (

@@ -4,20 +4,7 @@ import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useTabelaSelectContext } from "../../context/TabelaSelectContext";
 
-export default function TabelaDespesa() {
-    const [dados, setDados] = useState([]);
-
-    useEffect(() => {
-        axios
-            .get("/dados_randomicos.json")
-            .then((response) => {
-                setDados(response.data.fluxo);
-            })
-            .catch((error) => {
-                console.error("Erro ao obter os dados do JSON");
-            });
-    }, []);
-
+export default function TabelaDespesa({ dados }) {
     const columns = [
         { field: "id", headerName: "ID", width: 90 },
         { field: "banco", headerName: "BANCO", width: 150 },
