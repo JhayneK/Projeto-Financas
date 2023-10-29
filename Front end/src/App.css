@@ -275,88 +275,35 @@
 }
 
 .caixa-cadastro {
-    background-color: rgb(136, 136, 136);
-    margin: 0.5rem, 2vw, 0px;
-    height: 30vh;
-    width: 45vw;
-    padding: 1rem;
-    box-shadow: 0px 7px 10px -3px rgba(0, 0, 0, 0.75);
     border: 2px solid black;
+    height: 30vh;
+    width: 50vw;
+    padding: 0.5rem 1rem;
+    background-color: rgb(172, 172, 172);
+    /* background-color: rgb(136, 136, 136); */
+    box-shadow: 0px 7px 10px -3px rgba(0, 0, 0, 0.75);
 }
 
-.redimensionamento-cadastro {
-    width: 100%;
-    height: 90%;
+.caixa-cadastro-content {
     display: flex;
-    justify-content: center;
-}
-
-.caixa-cadastro-coluna {
-    display: inline-block;
-    height: 25vh;
-    width: 15vw;
-}
-
-.caixa-cadastro-alinhamento {
-    display: flex;
-    justify-content: start;
-}
-
-.caixa-cadastro-espacamento {
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-    font-size: large;
-    margin-top: 0.5rem;
-}
-
-.caixa-cadastro-espacamento input {
-    padding: 5px 5px;
-    width: 13vw;
-    border: none;
+    justify-content: space-between;
 }
 
 input:disabled {
     cursor: not-allowed;
 }
 
-.caixa-cadastro-espacamento select {
-    padding: 5px 5px;
-    border: none;
-}
-
-.caixa-cadastro-espacamento textarea {
-    resize: none;
-    width: 14.3vw;
-    height: 11vh;
-    padding: 5px 5px;
-    border: none;
-}
-
-.caixa-cadastro-espacamento-receita {
+.caixa-cadastro-coluna {
     display: flex;
     flex-direction: column;
-    font-weight: bold;
-    font-size: large;
-    margin-top: 0.5rem;
-}
-
-.caixa-cadastro-espacamento-receita textarea {
-    resize: none;
-    position: absolute;
-    margin-top: 2.25vh;
-    width: 29.2vw;
-    height: 6vh;
-    padding: 5px 5px;
-    border: none;
-}
-
-.campo-vazio {
-    border: 1px solid red !important;
+    width: 50%;
+    margin-right: 1rem;
 }
 
 .botoes-cadastro {
-    margin: -0.5rem 0px 0px 0.2rem;
+    display: flex;
+    position: absolute;
+    margin-top: -1.78rem;
 }
 
 .botoes-cadastro button {
@@ -364,6 +311,10 @@ input:disabled {
     padding: 5px 10px;
     font-weight: bold;
     color: #163d6b;
+}
+
+.campo-vazio {
+    border: 1px solid red !important;
 }
 
 /*Grafs*/

@@ -8,7 +8,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 52.25,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -19,7 +19,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": null,
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -30,7 +30,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -41,7 +41,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -52,7 +52,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -63,7 +63,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -74,7 +74,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -85,7 +85,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -96,7 +96,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -107,7 +107,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -118,7 +118,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -129,7 +129,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -140,7 +140,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -151,7 +151,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -162,7 +162,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
@@ -173,7 +173,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": "2023-09-07",
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         }
     ]

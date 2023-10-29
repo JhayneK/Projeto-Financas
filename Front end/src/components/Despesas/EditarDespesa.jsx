@@ -7,6 +7,9 @@ export default function EditarDespesa({ onClose, lineId }) {
     const [metodoPagamento, setMetodoPagamento] = useState("");
     const [descricao, setDescricao] = useState("");
 
+    const dataHoraAtual = new Date().toISOString().slice(0, 16);
+    const [data, setData] = useState("");
+
     const [valor, setValor] = useState("");
     const [valorError, setValorError] = useState("");
     const [valorValida, setValorValida] = useState("");
@@ -20,6 +23,7 @@ export default function EditarDespesa({ onClose, lineId }) {
         banco: false,
         categoria: false,
         valor: false,
+        data: false,
         descricao: false,
         parcelamento: false,
         metodoPagamento: false,
@@ -104,6 +108,7 @@ export default function EditarDespesa({ onClose, lineId }) {
         setMetodoPagamento("");
         setDescricao("");
         setParcelamento("");
+        setData("");
         setValor("");
         setValorError("");
         setParcelamentoError("");
@@ -118,19 +123,21 @@ export default function EditarDespesa({ onClose, lineId }) {
                 !categoria ||
                 !metodoPagamento ||
                 !valor ||
+                !data ||
                 !descricao
             ) {
                 throw new Error("Campo(s) não preenchido(s)");
             } else {
                 setValorValida(valor);
 
-                if (!parcelamento) {
-                    if (metodoPagamento === "PIX") {
-                        setParcelamentoValida(parcelamento);
-                    }
-                } else {
-                    throw new Error("Campo(s) não preenchido(s)");
-                }
+                // MANTER POR ENQUANTO ESTE TRECHO
+                // if (!parcelamento) {
+                //     if (metodoPagamento === "PIX") {
+                //         setParcelamentoValida(parcelamento);
+                //     }
+                // } else {
+                //     throw new Error("Campo(s) não preenchido(s)");
+                // }
             }
 
             // Valores em sua devida TIPAGEM, as outras variáveis estão certas
@@ -148,6 +155,7 @@ export default function EditarDespesa({ onClose, lineId }) {
                 categoria: !categoria,
                 valor: !valor,
                 descricao: !descricao,
+                data: !data,
                 parcelamento: !parcelamento,
                 metodoPagamento: !metodoPagamento,
             });
@@ -170,6 +178,7 @@ export default function EditarDespesa({ onClose, lineId }) {
                     setBanco(item.BANCO);
                     setValor(item.VALOR);
                     setCategoria(item.CATEGORIA);
+                    setData(item.DATA);
                     setParcelamento(item.PARCELAMENTO);
                     setMetodoPagamento(item.METODO_PAGAMENTO);
                     setDescricao(item.DESCRICAO);
@@ -188,149 +197,167 @@ export default function EditarDespesa({ onClose, lineId }) {
     return (
         <div className="tela-inserir">
             <div className="caixa-cadastro fadeInDown">
-                <div className="redimensionamento-cadastro">
+                <div className="caixa-cadastro-content">
                     <div className="caixa-cadastro-coluna">
-                        <div className="caixa-cadastro-alinhamento">
-                            <div>
-                                <div className="caixa-cadastro-espacamento">
-                                    <label>Banco</label>
-                                    <select
-                                        className={`${
-                                            camposVazios.banco
-                                                ? "campo-vazio"
-                                                : ""
-                                        }`}
-                                        name="banco"
-                                        id=""
-                                        value={banco}
-                                        onChange={handleBancoChange}
-                                    >
-                                        <option value={banco}>{banco}</option>
-                                        <option value="">Selecione</option>
-                                        <option value="nubank">NuBank</option>
-                                    </select>
-                                </div>
-                                <div
-                                    className="caixa-cadastro-espacamento"
-                                    style={{ marginTop: "8vh" }}
-                                >
-                                    <label>Valor</label>
-                                    <input
-                                        className={`${
-                                            camposVazios.valor
-                                                ? "campo-vazio"
-                                                : ""
-                                        }`}
-                                        type="text"
-                                        value={valor}
-                                        onChange={handleValorChange}
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                        <label
+                            style={{ marginTop: "0.5rem", fontWeight: "bold" }}
+                        >
+                            Banco
+                        </label>
+                        <select
+                            className={`${
+                                camposVazios.banco ? "campo-vazio" : ""
+                            }`}
+                            style={{ padding: "5px 5px" }}
+                            name="banco"
+                            id=""
+                            value={banco}
+                            onChange={handleBancoChange}
+                        >
+                            <option value={banco}>{banco}</option>
+                            <option value="">Selecione</option>
+                            <option value="nubank">NuBank</option>
+                        </select>
+
+                        <label
+                            style={{ marginTop: "1.5rem", fontWeight: "bold" }}
+                        >
+                            Valor
+                        </label>
+                        <input
+                            className={`${
+                                camposVazios.valor ? "campo-vazio" : ""
+                            }`}
+                            style={{ padding: "5px 5px" }}
+                            type="text"
+                            value={valor}
+                            onChange={handleValorChange}
+                        />
                     </div>
                     <div className="caixa-cadastro-coluna">
-                        <div className="caixa-cadastro-alinhamento">
-                            <div>
-                                <div className="caixa-cadastro-espacamento">
-                                    <label>Categoria</label>
-                                    <select
-                                        className={`${
-                                            camposVazios.categoria
-                                                ? "campo-vazio"
-                                                : ""
-                                        }`}
-                                        name="categoria"
-                                        id=""
-                                        value={categoria}
-                                        onChange={handleCategoriaChange}
-                                    >
-                                        <option value={categoria}>
-                                            {categoria}
-                                        </option>
-                                        <option value="">Selecione</option>
-                                        <option value="combustivel">
-                                            Combustível
-                                        </option>
-                                    </select>
-                                </div>
-                                <div
-                                    className="caixa-cadastro-espacamento"
-                                    style={{ marginTop: "8vh" }}
-                                >
-                                    <label>Parcelamento (x)</label>
-                                    <input
-                                        className={`${
-                                            camposVazios.parcelamento &&
-                                            parcelamentoHabilitado
-                                                ? "campo-vazio"
-                                                : ""
-                                        }`}
-                                        type="text"
-                                        value={parcelamento}
-                                        onChange={handleParcelamentoChange}
-                                        disabled={metodoPagamento === "pix"}
-                                    />
-                                    {parcelamentoError && (
-                                        <p style={{
-                                            color: "red",
-                                            marginTop: "0.5vh",
-                                            maxWidth: "13vw",
-                                            fontSize: "1.6vh",
-                                        }}>{parcelamentoError}</p>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
+                        <label
+                            style={{ marginTop: "0.5rem", fontWeight: "bold" }}
+                        >
+                            Categoria
+                        </label>
+                        <select
+                            className={`${
+                                camposVazios.categoria ? "campo-vazio" : ""
+                            }`}
+                            style={{ padding: "5px 5px" }}
+                            name="categoria"
+                            id=""
+                            value={categoria}
+                            onChange={handleCategoriaChange}
+                        >
+                            <option value={categoria}>{categoria}</option>
+                            <option value="">Selecione</option>
+                            <option value="combustivel">Combustível</option>
+                        </select>
+
+                        <label
+                            style={{ marginTop: "1.5rem", fontWeight: "bold" }}
+                        >
+                            Data
+                        </label>
+                        <input
+                            type="datetime-local"
+                            className={`${
+                                camposVazios.data ? "campo-vazio" : ""
+                            }`}
+                            name=""
+                            id=""
+                            style={{ padding: "5px 5px" }}
+                            value={data}
+                            max={dataHoraAtual}
+                            onChange={(event) => setData(event.target.value)}
+                        />
+
+                        <label
+                            style={{ marginTop: "1.5rem", fontWeight: "bold" }}
+                        >
+                            Descrição
+                        </label>
+                        <textarea
+                            className={`${
+                                camposVazios.descricao ? "campo-vazio" : ""
+                            }`}
+                            style={{
+                                padding: "5px 5px",
+                                resize: "none",
+                                height: "5.2rem",
+                                width: "205%",
+                            }}
+                            name="descricao"
+                            id=""
+                            value={descricao}
+                            onChange={handleDescricaoChange}
+                            maxLength="300"
+                        ></textarea>
                     </div>
                     <div className="caixa-cadastro-coluna">
-                        <div className="caixa-cadastro-alinhamento">
-                            <div>
-                                <div className="caixa-cadastro-espacamento">
-                                    <label>Método de Pagamento</label>
-                                    <select
-                                        className={`${
-                                            camposVazios.metodoPagamento
-                                                ? "campo-vazio"
-                                                : ""
-                                        }`}
-                                        name="metodopagamento"
-                                        id=""
-                                        value={metodoPagamento}
-                                        onChange={handleMetodoPagamentoChange}
-                                    >
-                                        <option value={metodoPagamento}>
-                                            {metodoPagamento}
-                                        </option>
-                                        <option value="">Selecione</option>
-                                        <option value="pix">PIX</option>
-                                    </select>
-                                </div>
-                                <div
-                                    className="caixa-cadastro-espacamento"
-                                    style={{ marginTop: "8vh" }}
-                                >
-                                    <label>Descrição</label>
-                                    <textarea
-                                        className={`${
-                                            camposVazios.descricao
-                                                ? "campo-vazio"
-                                                : ""
-                                        }`}
-                                        name="descricao"
-                                        id=""
-                                        value={descricao}
-                                        onChange={handleDescricaoChange}
-                                        maxLength="300"
-                                    ></textarea>
-                                </div>
-                            </div>
-                        </div>
+                        <label
+                            style={{ marginTop: "0.5rem", fontWeight: "bold" }}
+                        >
+                            Método de Pagamento
+                        </label>
+                        <select
+                            className={`${
+                                camposVazios.metodoPagamento
+                                    ? "campo-vazio"
+                                    : ""
+                            }`}
+                            style={{ width: "103.5%", padding: "5px 5px" }}
+                            name="metodopagamento"
+                            id=""
+                            value={metodoPagamento}
+                            onChange={handleMetodoPagamentoChange}
+                        >
+                            <option value={metodoPagamento}>{metodoPagamento}</option>
+                            <option value="">Selecione</option>
+                            <option value="pix">PIX</option>
+                        </select>
+                        <label
+                            style={{ marginTop: "1.5rem", fontWeight: "bold" }}
+                        >
+                            Parcelamento (x)
+                        </label>
+                        <input
+                            className={`${
+                                camposVazios.parcelamento &&
+                                parcelamentoHabilitado
+                                    ? "campo-vazio"
+                                    : ""
+                            }`}
+                            style={{
+                                height: "1.12rem",
+                                width: "99%",
+                                padding: "5px 5px",
+                            }}
+                            type="text"
+                            value={parcelamento}
+                            onChange={handleParcelamentoChange}
+                            disabled={metodoPagamento === "pix"}
+                        />
+
+                        {parcelamentoError && (
+                            <p
+                                style={{
+                                    color: "red",
+                                    marginTop: "0.5vh",
+                                    maxWidth: "15vw",
+                                    fontSize: "1.6vh",
+                                    fontWeight: "bold"
+                                }}
+                            >
+                                {parcelamentoError}
+                            </p>
+                        )}
                     </div>
                 </div>
                 <div className="botoes-cadastro">
                     <button onClick={atualizar}>Atualizar</button>
-                    <button onClick={onClose}>Cancelar</button>
+                    <button onClick={onClose}>Fechar</button>
                     <button
                         onClick={limparCampos}
                         style={{ marginLeft: "0.5vw" }}

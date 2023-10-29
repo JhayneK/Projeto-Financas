@@ -8,6 +8,7 @@ export default function VisualizarDespesa({ onClose, lineId }) {
     const [valor, setValor] = useState("");
     const [categoria, setCategoria] = useState("");
     const [parcelamento, setParcelamento] = useState("");
+    const [data, setData] = useState("");
     const [metodoPagamento, setMetodoPagamento] = useState("");
     const [descricao, setDescricao] = useState("");
 
@@ -27,6 +28,7 @@ export default function VisualizarDespesa({ onClose, lineId }) {
                     setBanco(item.BANCO);
                     setValor(item.VALOR);
                     setCategoria(item.CATEGORIA);
+                    setData(item.DATA);
                     setParcelamento(item.PARCELAMENTO);
                     setMetodoPagamento(item.METODO_PAGAMENTO);
                     setDescricao(item.DESCRICAO);
@@ -45,97 +47,116 @@ export default function VisualizarDespesa({ onClose, lineId }) {
     return (
         <div className="tela-inserir">
             <div className="caixa-cadastro fadeInDown">
-                <div className="redimensionamento-cadastro">
+                <div className="caixa-cadastro-content">
                     <div className="caixa-cadastro-coluna">
-                        <div className="caixa-cadastro-alinhamento">
-                            <div>
-                                <div className="caixa-cadastro-espacamento">
-                                    <label>Banco</label>
-                                    <select
-                                        name="banco"
-                                        id=""
-                                        value={banco}
-                                        readOnly
-                                    >
-                                        <option value={banco}>{banco}</option>
-                                    </select>
-                                </div>
-                                <div
-                                    className="caixa-cadastro-espacamento"
-                                    style={{ marginTop: "8vh" }}
-                                >
-                                    <label>Valor</label>
-                                    <input
-                                        type="text"
-                                        value={valor}
-                                        readOnly
-                                        style={{ outline: "none" }}
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                        <label
+                            style={{ marginTop: "0.5rem", fontWeight: "bold" }}
+                        >
+                            Banco
+                        </label>
+                        <select
+                            style={{ padding: "5px 5px" }}
+                            name="banco"
+                            id=""
+                            value={banco}
+                            readOnly
+                        >
+                            <option value={banco}>{banco}</option>
+                        </select>
+
+                        <label
+                            style={{ marginTop: "1.5rem", fontWeight: "bold" }}
+                        >
+                            Valor
+                        </label>
+                        <input
+                            style={{ padding: "5px 5px" }}
+                            type="text"
+                            value={valor}
+                            readOnly
+                        />
                     </div>
                     <div className="caixa-cadastro-coluna">
-                        <div className="caixa-cadastro-alinhamento">
-                            <div>
-                                <div className="caixa-cadastro-espacamento">
-                                    <label>Categoria</label>
-                                    <select
-                                        name="categoria"
-                                        id=""
-                                        value={categoria}
-                                        readOnly
-                                    >
-                                        <option value={categoria}>
-                                            {categoria}
-                                        </option>
-                                    </select>
-                                </div>
-                                <div
-                                    className="caixa-cadastro-espacamento"
-                                    style={{ marginTop: "8vh" }}
-                                >
-                                    <label>Parcelamento (x)</label>
-                                    <input
-                                        type="text"
-                                        value={parcelamento}
-                                        readOnly
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                        <label
+                            style={{ marginTop: "0.5rem", fontWeight: "bold" }}
+                        >
+                            Categoria
+                        </label>
+                        <select
+                            style={{ padding: "5px 5px" }}
+                            name="categoria"
+                            id=""
+                            value={categoria}
+                            readOnly
+                        >
+                            <option value={categoria}>{categoria}</option>
+                        </select>
+
+                        <label
+                            style={{ marginTop: "1.5rem", fontWeight: "bold" }}
+                        >
+                            Data
+                        </label>
+                        <input
+                            type="datetime-local"
+                            name=""
+                            id=""
+                            style={{ padding: "5px 5px" }}
+                            value={data}
+                            readOnly
+                        />
+
+                        <label
+                            style={{ marginTop: "1.5rem", fontWeight: "bold" }}
+                        >
+                            Descrição
+                        </label>
+                        <textarea
+                            style={{
+                                padding: "5px 5px",
+                                resize: "none",
+                                height: "5.2rem",
+                                width: "205%",
+                            }}
+                            name="descricao"
+                            id=""
+                            value={descricao}
+                            maxLength="300"
+                            readOnly
+                        ></textarea>
                     </div>
                     <div className="caixa-cadastro-coluna">
-                        <div className="caixa-cadastro-alinhamento">
-                            <div>
-                                <div className="caixa-cadastro-espacamento">
-                                    <label>Método de Pagamento</label>
-                                    <select
-                                        name="metodopagamento"
-                                        id=""
-                                        value={metodoPagamento}
-                                        readOnly
-                                    >
-                                        <option value={metodoPagamento}>
-                                            {metodoPagamento}
-                                        </option>
-                                    </select>
-                                </div>
-                                <div
-                                    className="caixa-cadastro-espacamento"
-                                    style={{ marginTop: "8vh" }}
-                                >
-                                    <label>Descrição</label>
-                                    <textarea
-                                        name="descricao"
-                                        id=""
-                                        value={descricao}
-                                        readOnly
-                                        maxLength="300"
-                                    ></textarea>
-                                </div>
-                            </div>
-                        </div>
+                        <label
+                            style={{ marginTop: "0.5rem", fontWeight: "bold" }}
+                        >
+                            Método de Pagamento
+                        </label>
+                        <select
+                            style={{ width: "103.5%", padding: "5px 5px" }}
+                            name="metodopagamento"
+                            id=""
+                            value={metodoPagamento}
+                            readOnly
+                        >
+                            <option value={metodoPagamento}>
+                                {metodoPagamento}
+                            </option> 
+                        </select>
+                        <label
+                            style={{ marginTop: "1.5rem", fontWeight: "bold" }}
+                        >
+                            Parcelamento (x)
+                        </label>
+                        <input
+                            style={{
+                                height: "1.12rem",
+                                width: "99%",
+                                padding: "5px 5px",
+                            }}
+                            type="text"
+                            value={parcelamento}
+                            readOnly
+                        />
                     </div>
                 </div>
                 <div className="botoes-cadastro">
