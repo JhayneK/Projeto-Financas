@@ -145,9 +145,10 @@ export default function EditarDespesa({ onClose, lineId }) {
             const parcelamentoValidado = parseInt(parcelamentoValida);
 
             // Enviar para o banco de dados
+            alert("Registro atualizado com sucesso!");
+            
             onClose(); // fecha o componente
 
-            alert("Registro atualizado com sucesso!");
         } catch {
             // Atualize o estado dos campos vazios com base em quais estão vazios
             setCamposVazios({

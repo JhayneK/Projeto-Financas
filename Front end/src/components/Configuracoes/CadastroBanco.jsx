@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { useTabelaSelectContext } from "../../context/TabelaSelectContext";
 import EditarBanco from "./EditarBanco";
+import InserirBanco from "./InserirBanco";
 
 export default function CadastroBanco() {
     const [banco, setBanco] = useState("");
@@ -42,6 +43,14 @@ export default function CadastroBanco() {
         setIdRow(linhaSelecionada);
     }, [linhaSelecionada, setIdRow]);
 
+    const [exibirInserir, setExibirInserir] = useState(false);
+    const handleAbrirInserir = () => {
+        setExibirInserir(true)
+    };
+    const handleFecharInserir = () => {
+        setExibirInserir(false);
+    };
+
     const [exibirEditar, setExibirEditar] = useState(false);
     const handleAbrirEditar = () => {
         if (idRow.length < 1) {
@@ -61,7 +70,7 @@ export default function CadastroBanco() {
     return (
         <div>
             <button className="botao-dashboard">RELOAD</button>
-            <button className="botao-dashboard">INSERIR</button>
+            <button onClick={handleAbrirInserir} className="botao-dashboard">INSERIR</button>
             <button onClick={handleAbrirEditar} className="botao-dashboard">
                 EDITAR
             </button>
@@ -86,80 +95,12 @@ export default function CadastroBanco() {
                     disableRowSelectionOnClick
                 />
             </Box>
+            {exibirInserir && (
+                <InserirBanco lineId={idRow} onClose={handleFecharInserir} />
+            )}
             {exibirEditar && (
                 <EditarBanco lineId={idRow} onClose={handleFecharEditar} />
             )}
         </div>
-        // <div>
-        //     <div style={{ display: "inline-block", margin: "0px 4rem" }}>
-        //         <div className="config-container">
-        //             <h1 style={{ margin: "0.5rem 0px 3rem 0px" }}>
-        //                 Cadastrar Banco
-        //             </h1>
-        //             <div style={{ marginTop: "4rem" }}>
-        //                 {/* <form action="" > */}
-        //                 <div>
-        //                     <div>
-        //                         <label style={{ fontWeight: "bold" }}>
-        //                             Nome do banco
-        //                         </label>
-        //                     </div>
-        //                     <input
-        //                         type="text"
-        //                         value={banco}
-        //                         onChange={(event) =>
-        //                             setBanco(event.target.value)
-        //                         }
-        //                         placeholder="Nome do Banco"
-        //                         required
-        //                     />
-        //                 </div>
-        //                 <div
-        //                     style={{
-        //                         display: "flex",
-        //                         justifyContent: "center",
-        //                     }}
-        //                 >
-        //                     <button>Cadastrar</button>
-        //                 </div>
-        //                 {/* </form> */}
-        //             </div>
-        //         </div>
-        //     </div>
-        //     <div style={{ display: "inline-block", margin: "0px 4rem" }}>
-        //         <div>
-        //             <button
-        //                 onClick={handleAbrirEditar}
-        //                 className="botao-dashboard"
-        //             >
-        //                 EDITAR
-        //             </button>
-        //             <button className="botao-dashboard">DELETAR SELEC.</button>
-        //             <Box sx={{ height: "40.5vh", width: "20vw" }}>
-        //                 <DataGrid
-        //                     rows={rows}
-        //                     columns={columns}
-        //                     rowSelectionModel={linhaSelecionada}
-        //                     onRowSelectionModelChange={(novaSelecao) => {
-        //                         setLinhaSelecionada(novaSelecao);
-        //                     }}
-        //                     initialState={{
-        //                         pagination: {
-        //                             paginationModel: {
-        //                                 pageSize: 25,
-        //                             },
-        //                         },
-        //                     }}
-        //                     pageSizeOptions={[25]}
-        //                     checkboxSelection
-        //                     disableRowSelectionOnClick
-        //                 />
-        //             </Box>
-        //         </div>
-        //     </div>
-        //     {exibirEditar && (
-        //         <EditarBanco lineId={idRow} onClose={handleFecharEditar} />
-        //     )}
-        // </div>
     );
 }

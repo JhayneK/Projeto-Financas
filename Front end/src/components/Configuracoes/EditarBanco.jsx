@@ -43,10 +43,10 @@ export default function EditarBanco({ onClose, lineId }) {
         } else {
             // Enviar para a API
             alert("Registro atualizado com sucesso!")
-            setBanco("");
-            setBancoError("");
+            // setBanco("");
+            // setBancoError("");
 
-            onClose
+            onClose()
         }
     }
 
