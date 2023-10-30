@@ -87,7 +87,7 @@ export default function RedefinirSenha() {
     return (
         <div className="config-container">
             <h1>Redefinir Senha</h1>
-            <div style={{ marginTop: "3rem" }}>
+            <div id="redefinir-senha-espacamento-topo">
                 <div className="config-espacamento">
                     <div>
                         <label style={{ fontWeight: "bold" }}>

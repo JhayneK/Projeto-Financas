@@ -118,7 +118,7 @@ export default function CadastroBanco() {
                 EDITAR
             </button>
             <button className="botao-dashboard">DELETAR SELEC.</button>
-            <Box sx={{ height: "40.5vh", width: "30vw" }}>
+            <Box sx={{ height: "100%", width: "100%" }}>
                 {!exibirCarregamento ? (
                     <DataGrid
                         rows={rows}

@@ -402,7 +402,7 @@ export default function Combustivel() {
                                 style={{ marginTop: "12.4%" }}
                                 className="form-comb-buttons"
                             >
-                                <button onClick={adicionarDespesa}>
+                                <button id="add-despesa" onClick={adicionarDespesa}>
                                     Adicionar à Despesas
                                 </button>
                             </div>

@@ -4,6 +4,48 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+@media screen and (max-width: 1366px) and (max-height: 768px) {
+
+    .fluxo-box {
+        width: 350px !important;
+        height: 100px !important;
+    }
+
+    .barra-lateral-content a {
+        font-size: 10.5px;
+    }
+
+    .caixa-gasolina {
+        width: 60vw !important;
+        height: 62vh !important;
+    }
+
+    .form-comb-buttons {
+        margin-top: 3.6% !important;
+    }
+
+    .caixa-cadastro {
+        height: 36vh !important;
+    }
+
+    .botoes-cadastro button {
+        padding: 5px !important;
+    }
+
+    #add-despesa {
+        margin-top: 89%;
+    }
+
+    #redefinir-senha-espacamento-topo {
+        margin-top: 1rem !important;
+    }
+
+    .config-editar-box {
+        width: 18vw !important;
+        height: 29vh !important;
+    }
+}
+
 .header {
     width: 100%;
     height: 6vh;
@@ -342,9 +384,10 @@ input:disabled {
     background-color: white;
     box-shadow: 0px 1px 22px -12px #607d8b;
     border-radius: 5px;
-    margin-bottom: 6px;
+    /* margin-bottom: 6px;
     margin-right: 5vh;
-    margin-left: 5vh;
+    margin-left: 5vh; */
+    margin: 0px 5vh 6px 5vh;
 }
 
 .line-box {
@@ -479,7 +522,7 @@ input:disabled {
     padding: 20px;
     border-radius: 15px;
     background-color: rgb(236, 236, 236);
-    box-shadow: 0px 5px 17px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 17px -5px rgba(0, 0, 0, 0.75);
 }
 
 .config-espacamento {
@@ -503,6 +546,10 @@ input:disabled {
     border-radius: 15px;
     font-weight: bold;
     border: 1px solid black;
+}
+
+#redefinir-senha-espacamento-topo {
+    margin-top: 3rem;
 }
 
 .config-editar-container {

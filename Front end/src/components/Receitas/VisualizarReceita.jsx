@@ -55,6 +55,7 @@ export default function VisualizarReceita({ onClose, lineId }) {
                             name="banco"
                             id=""
                             value={banco}
+                            readOnly
                         >
                             <option value={banco}>{banco}</option>
                         </select>

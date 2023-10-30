@@ -35,7 +35,7 @@ export default function CadastroLogin() {
                 <form action="">
                     <div>
                         <input
-                            style={{ marginTop: "4rem"}}
+                            style={{ marginTop: "2rem"}}
                             type="text"
                             value={username}
                             onChange={(event) => setUsername(event.target.value)}
