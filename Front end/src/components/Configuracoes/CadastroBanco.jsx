@@ -6,6 +6,7 @@ import { useTabelaSelectContext } from "../../context/TabelaSelectContext";
 import EditarBanco from "./EditarBanco";
 import InserirBanco from "./InserirBanco";
 import TelaCarregamento from "../TelaCarregamento/TelaCarregamento";
+import VisualizarBanco from "./VisualizarBanco";
 
 export default function CadastroBanco() {
     const [banco, setBanco] = useState("");
@@ -85,8 +86,23 @@ export default function CadastroBanco() {
     const handleFecharEditar = () => {
         setExibirEditar(false);
     };
+    
+    const [exibirVisualizar, setExibirVisualizar] = useState(false);
+    const handleAbrirVisualizar = () => {
+        if (idRow.length < 1) {
+            alert("É necessário selecionar uma linha para poder visualizar.");
+        } else if (idRow.length === 1) {
+            setExibirVisualizar(true);
+        } else {
+            alert(
+                "É necessário selecionar apenas uma linha para poder visualizar."
+            );
+        }
+    };
+    const handleFecharVisualizar = () => {
+        setExibirVisualizar(false);
+    };
 
-    // return !exibirCarregamento ? (
     return (
         <div>
             <button onClick={reload} className="botao-dashboard">
@@ -94,6 +110,9 @@ export default function CadastroBanco() {
             </button>
             <button onClick={handleAbrirInserir} className="botao-dashboard">
                 INSERIR
+            </button>
+            <button onClick={handleAbrirVisualizar} className="botao-dashboard">
+                VISUALIZAR
             </button>
             <button onClick={handleAbrirEditar} className="botao-dashboard">
                 EDITAR
@@ -125,6 +144,9 @@ export default function CadastroBanco() {
             </Box>
             {exibirInserir && (
                 <InserirBanco lineId={idRow} onClose={handleFecharInserir} />
+            )}
+            {exibirVisualizar && (
+                <VisualizarBanco lineId={idRow} onClose={handleFecharVisualizar} />
             )}
             {exibirEditar && (
                 <EditarBanco lineId={idRow} onClose={handleFecharEditar} />
