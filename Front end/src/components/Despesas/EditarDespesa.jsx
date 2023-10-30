@@ -7,9 +7,6 @@ export default function EditarDespesa({ onClose, lineId }) {
     const [metodoPagamento, setMetodoPagamento] = useState("");
     const [descricao, setDescricao] = useState("");
 
-    const dataHoraAtual = new Date().toISOString().slice(0, 16);
-    const [data, setData] = useState("");
-
     const [valor, setValor] = useState("");
     const [valorError, setValorError] = useState("");
     const [valorValida, setValorValida] = useState("");
@@ -23,7 +20,6 @@ export default function EditarDespesa({ onClose, lineId }) {
         banco: false,
         categoria: false,
         valor: false,
-        data: false,
         descricao: false,
         parcelamento: false,
         metodoPagamento: false,
@@ -108,7 +104,6 @@ export default function EditarDespesa({ onClose, lineId }) {
         setMetodoPagamento("");
         setDescricao("");
         setParcelamento("");
-        setData("");
         setValor("");
         setValorError("");
         setParcelamentoError("");
@@ -123,7 +118,6 @@ export default function EditarDespesa({ onClose, lineId }) {
                 !categoria ||
                 !metodoPagamento ||
                 !valor ||
-                !data ||
                 !descricao
             ) {
                 throw new Error("Campo(s) não preenchido(s)");
@@ -146,9 +140,8 @@ export default function EditarDespesa({ onClose, lineId }) {
 
             // Enviar para o banco de dados
             alert("Registro atualizado com sucesso!");
-            
-            onClose(); // fecha o componente
 
+            onClose(); // fecha o componente
         } catch {
             // Atualize o estado dos campos vazios com base em quais estão vazios
             setCamposVazios({
@@ -156,7 +149,6 @@ export default function EditarDespesa({ onClose, lineId }) {
                 categoria: !categoria,
                 valor: !valor,
                 descricao: !descricao,
-                data: !data,
                 parcelamento: !parcelamento,
                 metodoPagamento: !metodoPagamento,
             });
@@ -179,7 +171,6 @@ export default function EditarDespesa({ onClose, lineId }) {
                     setBanco(item.BANCO);
                     setValor(item.VALOR);
                     setCategoria(item.CATEGORIA);
-                    setData(item.DATA);
                     setParcelamento(item.PARCELAMENTO);
                     setMetodoPagamento(item.METODO_PAGAMENTO);
                     setDescricao(item.DESCRICAO);
@@ -221,7 +212,7 @@ export default function EditarDespesa({ onClose, lineId }) {
                         </select>
 
                         <label
-                            style={{ marginTop: "1.5rem", fontWeight: "bold" }}
+                            style={{ marginTop: "3rem", fontWeight: "bold" }}
                         >
                             Valor
                         </label>
@@ -255,46 +246,41 @@ export default function EditarDespesa({ onClose, lineId }) {
                             <option value="">Selecione</option>
                             <option value="combustivel">Combustível</option>
                         </select>
-
                         <label
-                            style={{ marginTop: "1.5rem", fontWeight: "bold" }}
+                            style={{ marginTop: "3rem", fontWeight: "bold" }}
                         >
-                            Data
+                            Parcelamento (x)
                         </label>
                         <input
-                            type="datetime-local"
                             className={`${
-                                camposVazios.data ? "campo-vazio" : ""
-                            }`}
-                            name=""
-                            id=""
-                            style={{ padding: "5px 5px" }}
-                            value={data}
-                            max={dataHoraAtual}
-                            onChange={(event) => setData(event.target.value)}
-                        />
-
-                        <label
-                            style={{ marginTop: "1.5rem", fontWeight: "bold" }}
-                        >
-                            Descrição
-                        </label>
-                        <textarea
-                            className={`${
-                                camposVazios.descricao ? "campo-vazio" : ""
+                                camposVazios.parcelamento &&
+                                parcelamentoHabilitado
+                                    ? "campo-vazio"
+                                    : ""
                             }`}
                             style={{
+                                height: "1.12rem",
                                 padding: "5px 5px",
-                                resize: "none",
-                                height: "5.2rem",
-                                width: "205%",
                             }}
-                            name="descricao"
-                            id=""
-                            value={descricao}
-                            onChange={handleDescricaoChange}
-                            maxLength="300"
-                        ></textarea>
+                            type="text"
+                            value={parcelamento}
+                            onChange={handleParcelamentoChange}
+                            disabled={metodoPagamento === "pix"}
+                        />
+
+                        {parcelamentoError && (
+                            <p
+                                style={{
+                                    color: "red",
+                                    marginTop: "0.5vh",
+                                    maxWidth: "15vw",
+                                    fontSize: "1.6vh",
+                                    fontWeight: "bold",
+                                }}
+                            >
+                                {parcelamentoError}
+                            </p>
+                        )}
                     </div>
                     <div className="caixa-cadastro-coluna">
                         <label
@@ -314,46 +300,33 @@ export default function EditarDespesa({ onClose, lineId }) {
                             value={metodoPagamento}
                             onChange={handleMetodoPagamentoChange}
                         >
-                            <option value={metodoPagamento}>{metodoPagamento}</option>
+                            <option value={metodoPagamento}>
+                                {metodoPagamento}
+                            </option>
                             <option value="">Selecione</option>
                             <option value="pix">PIX</option>
                         </select>
                         <label
-                            style={{ marginTop: "1.5rem", fontWeight: "bold" }}
+                            style={{ marginTop: "3rem", fontWeight: "bold" }}
                         >
-                            Parcelamento (x)
+                            Descrição
                         </label>
-                        <input
+                        <textarea
                             className={`${
-                                camposVazios.parcelamento &&
-                                parcelamentoHabilitado
-                                    ? "campo-vazio"
-                                    : ""
+                                camposVazios.descricao ? "campo-vazio" : ""
                             }`}
                             style={{
-                                height: "1.12rem",
-                                width: "99%",
                                 padding: "5px 5px",
+                                resize: "none",
+                                height: "8.5rem",
+                                width: "99.8%",
                             }}
-                            type="text"
-                            value={parcelamento}
-                            onChange={handleParcelamentoChange}
-                            disabled={metodoPagamento === "pix"}
-                        />
-
-                        {parcelamentoError && (
-                            <p
-                                style={{
-                                    color: "red",
-                                    marginTop: "0.5vh",
-                                    maxWidth: "15vw",
-                                    fontSize: "1.6vh",
-                                    fontWeight: "bold"
-                                }}
-                            >
-                                {parcelamentoError}
-                            </p>
-                        )}
+                            name="descricao"
+                            id=""
+                            value={descricao}
+                            onChange={handleDescricaoChange}
+                            maxLength="300"
+                        ></textarea>
                     </div>
                 </div>
                 <div className="botoes-cadastro">

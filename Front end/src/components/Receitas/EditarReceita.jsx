@@ -7,9 +7,6 @@ export default function EditarReceita({ onClose, lineId }) {
     const [metodoPagamento, setMetodoPagamento] = useState("");
     const [descricao, setDescricao] = useState("");
 
-    const dataHoraAtual = new Date().toISOString().slice(0, 16);
-    const [data, setData] = useState("");
-
     const [valor, setValor] = useState("");
     const [valorError, setValorError] = useState("");
     const [valorValida, setValorValida] = useState("");
@@ -18,7 +15,6 @@ export default function EditarReceita({ onClose, lineId }) {
         banco: false,
         categoria: false,
         valor: false,
-        data: false,
         descricao: false,
         metodoPagamento: false,
     });
@@ -65,7 +61,6 @@ export default function EditarReceita({ onClose, lineId }) {
         setCategoria("");
         setMetodoPagamento("");
         setDescricao("");
-        setData("");
         setValor("");
         setValorError("");
     };
@@ -79,7 +74,7 @@ export default function EditarReceita({ onClose, lineId }) {
                 !categoria ||
                 !metodoPagamento ||
                 !valor ||
-                !data ||
+                // !data ||
                 !descricao ||
                 !valor
             ) {
@@ -100,7 +95,6 @@ export default function EditarReceita({ onClose, lineId }) {
                 banco: !banco,
                 categoria: !categoria,
                 valor: !valor,
-                data: !data,
                 descricao: !descricao,
                 metodoPagamento: !metodoPagamento,
             });
@@ -123,7 +117,6 @@ export default function EditarReceita({ onClose, lineId }) {
                     setBanco(item.BANCO);
                     setValor(item.VALOR);
                     setCategoria(item.CATEGORIA);
-                    setData(item.DATA);
                     setMetodoPagamento(item.METODO_PAGAMENTO);
                     setDescricao(item.DESCRICAO);
                 } else {
@@ -197,23 +190,28 @@ export default function EditarReceita({ onClose, lineId }) {
                             <option value="">Selecione</option>
                             <option value="combustivel">Combustível</option>
                         </select>
+
                         <label
                             style={{ marginTop: "3rem", fontWeight: "bold" }}
                         >
-                            Data
+                            Descrição
                         </label>
-                        <input
-                            type="datetime-local"
-                            style={{ padding: "5px 5px" }}
+                        <textarea
                             className={`${
-                                camposVazios.data ? "campo-vazio" : ""
+                                camposVazios.descricao ? "campo-vazio" : ""
                             }`}
-                            name="data"
+                            style={{
+                                padding: "5px 5px",
+                                resize: "none",
+                                height: "8.5rem",
+                                width: "205%",
+                            }}
+                            name="descricao"
                             id=""
-                            value={data}
-                            max={dataHoraAtual}
-                            onChange={(event) => setData(event.target.value)}
-                        />
+                            value={descricao}
+                            onChange={handleDescricaoChange}
+                            maxLength="300"
+                        ></textarea>
                     </div>
                     <div className="caixa-cadastro-coluna">
                         <label
@@ -233,31 +231,12 @@ export default function EditarReceita({ onClose, lineId }) {
                             value={metodoPagamento}
                             onChange={handleMetodoPagamentoChange}
                         >
-                            <option value={metodoPagamento}>{metodoPagamento}</option>
+                            <option value={metodoPagamento}>
+                                {metodoPagamento}
+                            </option>
                             <option value="">Selecione</option>
                             <option value="pix">PIX</option>
                         </select>
-                        <label
-                            style={{ marginTop: "3rem", fontWeight: "bold" }}
-                        >
-                            Descrição
-                        </label>
-                        <textarea
-                            className={`${
-                                camposVazios.descricao ? "campo-vazio" : ""
-                            }`}
-                            style={{
-                                padding: "5px 5px",
-                                resize: "none",
-                                height: "8.5rem",
-                                width: "100%",
-                            }}
-                            name="descricao"
-                            id=""
-                            value={descricao}
-                            onChange={handleDescricaoChange}
-                            maxLength="300"
-                        ></textarea>
                     </div>
                 </div>
                 <div className="botoes-cadastro">
