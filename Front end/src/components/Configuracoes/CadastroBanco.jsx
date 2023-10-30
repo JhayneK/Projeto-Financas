@@ -5,11 +5,13 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useTabelaSelectContext } from "../../context/TabelaSelectContext";
 import EditarBanco from "./EditarBanco";
 import InserirBanco from "./InserirBanco";
+import TelaCarregamento from "../TelaCarregamento/TelaCarregamento";
 
 export default function CadastroBanco() {
     const [banco, setBanco] = useState("");
-
     const [dados, setDados] = useState([]);
+
+    const [exibirCarregamento, setExibirCarregamento] = useState(false);
 
     useEffect(() => {
         axios
@@ -21,6 +23,23 @@ export default function CadastroBanco() {
                 console.error("Erro ao obter os dados do JSON");
             });
     }, []);
+
+    const reload = () => {
+        setExibirCarregamento(true);
+
+        setTimeout(() => {
+            axios
+                .get("/dados_randomicos.json")
+                .then((response) => {
+                    setDados(response.data.fluxo);
+                    setExibirCarregamento(false);
+                })
+                .catch((error) => {
+                    setExibirCarregamento(false);
+                    console.error("Erro ao obter os dados do JSON");
+                });
+        }, 350); // Aguarda 350 milissegundos antes de executar a função
+    };
 
     const columns = [
         { field: "id", headerName: "ID", width: 170 },
@@ -45,7 +64,7 @@ export default function CadastroBanco() {
 
     const [exibirInserir, setExibirInserir] = useState(false);
     const handleAbrirInserir = () => {
-        setExibirInserir(true)
+        setExibirInserir(true);
     };
     const handleFecharInserir = () => {
         setExibirInserir(false);
@@ -67,33 +86,42 @@ export default function CadastroBanco() {
         setExibirEditar(false);
     };
 
+    // return !exibirCarregamento ? (
     return (
         <div>
-            <button className="botao-dashboard">RELOAD</button>
-            <button onClick={handleAbrirInserir} className="botao-dashboard">INSERIR</button>
+            <button onClick={reload} className="botao-dashboard">
+                RELOAD
+            </button>
+            <button onClick={handleAbrirInserir} className="botao-dashboard">
+                INSERIR
+            </button>
             <button onClick={handleAbrirEditar} className="botao-dashboard">
                 EDITAR
             </button>
             <button className="botao-dashboard">DELETAR SELEC.</button>
             <Box sx={{ height: "40.5vh", width: "30vw" }}>
-                <DataGrid
-                    rows={rows}
-                    columns={columns}
-                    rowSelectionModel={linhaSelecionada}
-                    onRowSelectionModelChange={(novaSelecao) => {
-                        setLinhaSelecionada(novaSelecao);
-                    }}
-                    initialState={{
-                        pagination: {
-                            paginationModel: {
-                                pageSize: 5,
+                {!exibirCarregamento ? (
+                    <DataGrid
+                        rows={rows}
+                        columns={columns}
+                        rowSelectionModel={linhaSelecionada}
+                        onRowSelectionModelChange={(novaSelecao) => {
+                            setLinhaSelecionada(novaSelecao);
+                        }}
+                        initialState={{
+                            pagination: {
+                                paginationModel: {
+                                    pageSize: 5,
+                                },
                             },
-                        },
-                    }}
-                    pageSizeOptions={[5]}
-                    checkboxSelection
-                    disableRowSelectionOnClick
-                />
+                        }}
+                        pageSizeOptions={[5]}
+                        checkboxSelection
+                        disableRowSelectionOnClick
+                    />
+                ) : (
+                    <TelaCarregamento />
+                )}
             </Box>
             {exibirInserir && (
                 <InserirBanco lineId={idRow} onClose={handleFecharInserir} />
@@ -103,4 +131,7 @@ export default function CadastroBanco() {
             )}
         </div>
     );
+    // ) : (
+    //     <TelaCarregamento />
+    // );
 }

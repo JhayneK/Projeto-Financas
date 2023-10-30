@@ -19,27 +19,35 @@ export default function Config() {
     const [redefinirSenha, setRedefinirSenha] = useState(true);
 
     const toggleRedefinirSenha = () => {
-        setRedefinirSenha(true);
+        setRedefinirSenha(false);
     };
 
     const toggleCadastrarBanco = () => {
-        setRedefinirSenha(false);
+        setRedefinirSenha(true);
     };
 
     const styleRedefinirSenha = {
         fontSize: "0.74vw",
-        borderBottom: redefinirSenha ? "2px solid rgb(209, 209, 209)" : "none",
+        borderBottom: !redefinirSenha ? "2px solid rgb(209, 209, 209)" : "none",
     }
 
     const styleCadastrarBanco = {
         fontSize: "0.74vw",
-        borderBottom: !redefinirSenha ? "2px solid rgb(209, 209, 209)" : "none",
+        borderBottom: redefinirSenha ? "2px solid rgb(209, 209, 209)" : "none",
     }
 
     return !exibirCarregamento ? (
         <div className="pages-logado-main-content">
             <div className="header-config-container">
                 <div className="header-config-content">
+                    <div className="header-config-diretorio">
+                    <h2
+                            style={styleCadastrarBanco}
+                            onClick={toggleCadastrarBanco}
+                        >
+                            Cadastrar Banco
+                        </h2>
+                    </div>
                     <div className="header-config-diretorio">
                         <h2
                             style={styleRedefinirSenha}
@@ -48,18 +56,10 @@ export default function Config() {
                             Redefinir Senha
                         </h2>
                     </div>
-                    <div className="header-config-diretorio">
-                        <h2
-                            style={styleCadastrarBanco}
-                            onClick={toggleCadastrarBanco}
-                        >
-                            Cadastrar Banco
-                        </h2>
-                    </div>
                 </div>
             </div>
             <div className="config-main-content">
-                {redefinirSenha ? <RedefinirSenha /> : <CadastroBanco />}
+                {redefinirSenha ? <CadastroBanco /> : <RedefinirSenha />}
             </div>
         </div>
     ) : (

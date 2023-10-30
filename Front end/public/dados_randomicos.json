@@ -19,7 +19,7 @@
             "METODO_PAGAMENTO": "Crédito",
             "PARCELAMENTO": "5",
             "VALOR": 50.00,
-            "DATA": null,
+            "DATA": "2023-10-28T12:30",
             "DESCRICAO": "Gasolina no posto"
         },
         {
