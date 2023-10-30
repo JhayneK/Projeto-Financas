@@ -98,6 +98,7 @@ export default function Combustivel() {
     };
 
     const handleParcelamentoChange = (event) => {
+
         const inputParcelamento = event.target.value;
 
         // Remova pontos e vírgulas do valor de entrada
@@ -122,6 +123,19 @@ export default function Combustivel() {
         } else {
             setParcelamentoError("O parcelamento deve estar entre 1 e 24");
         }
+    };
+
+    const handleMetodoPagamentoChange = (event) => {
+        const selectedMetodoPagamento = event.target.value;
+        setMetodoPagamento(selectedMetodoPagamento);
+
+        // Se o método de pagamento for "pix", desabilita o campo de parcelamento
+        // Fazer isso para todos os métodos viáveis para esta condição
+        if (selectedMetodoPagamento === "pix") {
+            // setParcelamentoHabilitado(false);
+            setParcelamento("");
+            setParcelamentoError("");
+        } 
     };
 
     const adicionarDespesa = () => {
@@ -292,9 +306,10 @@ export default function Combustivel() {
                                     name="metodopagamento"
                                     id=""
                                     value={metodoPagamento}
-                                    onChange={(event) => {
-                                        setMetodoPagamento(event.target.value);
-                                    }}
+                                    // onChange={(event) => {
+                                    //     setMetodoPagamento(event.target.value);
+                                    // }}
+                                    onChange={handleMetodoPagamentoChange}
                                     style={{ outline: "none" }}
                                 >
                                     <option value="">Selecione</option>
@@ -384,7 +399,7 @@ export default function Combustivel() {
                                 />
                             </div>
                             <div
-                                style={{ marginTop: "12.5%" }}
+                                style={{ marginTop: "12.4%" }}
                                 className="form-comb-buttons"
                             >
                                 <button onClick={adicionarDespesa}>
