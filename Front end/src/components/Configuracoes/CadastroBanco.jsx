@@ -5,7 +5,6 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useTabelaSelectContext } from "../../context/TabelaSelectContext";
 import EditarBanco from "./EditarBanco";
 import InserirBanco from "./InserirBanco";
-import TelaCarregamento from "../TelaCarregamento/TelaCarregamento";
 import VisualizarBanco from "./VisualizarBanco";
 
 export default function CadastroBanco() {
@@ -26,20 +25,22 @@ export default function CadastroBanco() {
     }, []);
 
     const reload = () => {
-        setExibirCarregamento(true);
+        // Reloada a página
+        window.location.reload()
+        // setExibirCarregamento(true);
 
-        setTimeout(() => {
-            axios
-                .get("/dados_randomicos.json")
-                .then((response) => {
-                    setDados(response.data.fluxo);
-                    setExibirCarregamento(false);
-                })
-                .catch((error) => {
-                    setExibirCarregamento(false);
-                    console.error("Erro ao obter os dados do JSON");
-                });
-        }, 350); // Aguarda 350 milissegundos antes de executar a função
+        // setTimeout(() => {
+        //     axios
+        //         .get("/dados_randomicos.json")
+        //         .then((response) => {
+        //             setDados(response.data.fluxo);
+        //             setExibirCarregamento(false);
+        //         })
+        //         .catch((error) => {
+        //             setExibirCarregamento(false);
+        //             console.error("Erro ao obter os dados do JSON");
+        //         });
+        // }, 350); // Aguarda 350 milissegundos antes de executar a função
     };
 
     const columns = [
@@ -65,7 +66,11 @@ export default function CadastroBanco() {
 
     const [exibirInserir, setExibirInserir] = useState(false);
     const handleAbrirInserir = () => {
-        setExibirInserir(true);
+        if (dados.length > 5) {
+            alert("Você não pode ter mais do que 5 bancos cadastrados.")
+        } else {
+            setExibirInserir(true);
+        }
     };
     const handleFecharInserir = () => {
         setExibirInserir(false);
@@ -86,7 +91,7 @@ export default function CadastroBanco() {
     const handleFecharEditar = () => {
         setExibirEditar(false);
     };
-    
+
     const [exibirVisualizar, setExibirVisualizar] = useState(false);
     const handleAbrirVisualizar = () => {
         if (idRow.length < 1) {
@@ -119,41 +124,37 @@ export default function CadastroBanco() {
             </button>
             <button className="botao-dashboard">DELETAR SELEC.</button>
             <Box sx={{ height: "100%", width: "100%" }}>
-                {!exibirCarregamento ? (
-                    <DataGrid
-                        rows={rows}
-                        columns={columns}
-                        rowSelectionModel={linhaSelecionada}
-                        onRowSelectionModelChange={(novaSelecao) => {
-                            setLinhaSelecionada(novaSelecao);
-                        }}
-                        initialState={{
-                            pagination: {
-                                paginationModel: {
-                                    pageSize: 5,
-                                },
+                <DataGrid
+                    rows={rows}
+                    columns={columns}
+                    rowSelectionModel={linhaSelecionada}
+                    onRowSelectionModelChange={(novaSelecao) => {
+                        setLinhaSelecionada(novaSelecao);
+                    }}
+                    initialState={{
+                        pagination: {
+                            paginationModel: {
+                                pageSize: 5,
                             },
-                        }}
-                        pageSizeOptions={[5]}
-                        checkboxSelection
-                        disableRowSelectionOnClick
-                    />
-                ) : (
-                    <TelaCarregamento />
-                )}
+                        },
+                    }}
+                    pageSizeOptions={[5]}
+                    checkboxSelection
+                    disableRowSelectionOnClick
+                />
             </Box>
             {exibirInserir && (
                 <InserirBanco lineId={idRow} onClose={handleFecharInserir} />
             )}
             {exibirVisualizar && (
-                <VisualizarBanco lineId={idRow} onClose={handleFecharVisualizar} />
+                <VisualizarBanco
+                    lineId={idRow}
+                    onClose={handleFecharVisualizar}
+                />
             )}
             {exibirEditar && (
                 <EditarBanco lineId={idRow} onClose={handleFecharEditar} />
             )}
         </div>
     );
-    // ) : (
-    //     <TelaCarregamento />
-    // );
 }

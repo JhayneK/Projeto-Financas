@@ -64,11 +64,6 @@ export default function GraficoLinhas({ titulo, width = 400, height = 250 }) {
         },
     };
 
-    // const isSmallScreen = window.innerWidth <= 1366 && window.innerHeight <= 768;
-
-    // width = isSmallScreen ? 100 : width;
-    // height = isSmallScreen ? 100 : height;
-
     return (
         <ApexCharts
             style={{ margin: "0px 2rem" }}

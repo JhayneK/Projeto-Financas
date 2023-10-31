@@ -26,6 +26,8 @@ export default function InserirBanco({ onClose }) {
             alert("Registro inserido com sucesso!");
 
             onClose();
+            
+            window.location.reload();
         } catch {
             setCamposVazios({
                 banco: !banco,
